@@ -20,12 +20,17 @@ import {
   ModelBlock,
   ModelItem,
 } from '../facets.model'
+import { TranslateModule } from '@ngx-translate/core'
+import { FacetItemComponent } from '../facet-item/facet-item.component'
+import { NgFor, NgIf } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-facet-block',
   templateUrl: './facet-block.component.html',
   styleUrls: ['./facet-block.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, NgFor, FacetItemComponent, TranslateModule],
 })
 export class FacetBlockComponent
   implements OnInit, AfterViewInit, OnDestroy, OnChanges

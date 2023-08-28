@@ -11,7 +11,21 @@ import {
   PublishStatusEnumApiModel,
 } from '@geonetwork-ui/data-access/datafeeder'
 import { delay, of } from 'rxjs'
-import { UiInputsModule } from '@geonetwork-ui/ui/inputs'
+import {
+  AutocompleteComponent,
+  ButtonComponent,
+  CheckToggleComponent,
+  ChipsInputComponent,
+  CopyTextButtonComponent,
+  DragAndDropFileInputComponent,
+  DropdownMultiselectComponent,
+  DropdownSelectorComponent,
+  NavigationButtonComponent,
+  StarToggleComponent,
+  TextAreaComponent,
+  TextInputComponent,
+  ViewportIntersectorComponent,
+} from '@geonetwork-ui/ui/inputs'
 import advanceTimersByTime = jest.advanceTimersByTime
 
 const JOB_ID = '1234'
@@ -75,7 +89,23 @@ describe('PublishPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PublishPageComponent],
-      imports: [UiInputsModule, UtilI18nModule, TranslateModule.forRoot()],
+      imports: [
+        AutocompleteComponent,
+        ButtonComponent,
+        CheckToggleComponent,
+        ChipsInputComponent,
+        CopyTextButtonComponent,
+        DragAndDropFileInputComponent,
+        DropdownSelectorComponent,
+        DropdownMultiselectComponent,
+        NavigationButtonComponent,
+        StarToggleComponent,
+        TextAreaComponent,
+        TextInputComponent,
+        ViewportIntersectorComponent,
+        UtilI18nModule,
+        TranslateModule.forRoot(),
+      ],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         {

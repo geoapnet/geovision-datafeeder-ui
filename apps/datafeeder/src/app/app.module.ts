@@ -1,7 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { ApiModule, Configuration } from '@geonetwork-ui/data-access/datafeeder'
-import { UiWidgetsModule } from '@geonetwork-ui/ui/widgets'
+import {
+  BadgeComponent,
+  ColorScaleComponent,
+  LoadingMaskComponent,
+  PopupAlertComponent,
+  ProgressBarComponent,
+  SpinningLoaderComponent,
+  StepBarComponent,
+} from '@geonetwork-ui/ui/widgets'
 import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { environment } from '../environments/environment'
@@ -13,7 +21,21 @@ import {
   TRANSLATE_DEFAULT_CONFIG,
   UtilI18nModule,
 } from '@geonetwork-ui/util/i18n'
-import { UiInputsModule } from '@geonetwork-ui/ui/inputs'
+import {
+  AutocompleteComponent,
+  ButtonComponent,
+  CheckToggleComponent,
+  ChipsInputComponent,
+  CopyTextButtonComponent,
+  DragAndDropFileInputComponent,
+  DropdownMultiselectComponent,
+  DropdownSelectorComponent,
+  NavigationButtonComponent,
+  StarToggleComponent,
+  TextAreaComponent,
+  TextInputComponent,
+  ViewportIntersectorComponent,
+} from '@geonetwork-ui/ui/inputs'
 import { UploadDataPageComponent } from './presentation/pages/upload-data-page/upload-data.page'
 import { UploadDataRulesComponent } from './presentation/components/upload-data-rules/upload-data-rules.component'
 import { HttpClientModule } from '@angular/common/http'
@@ -68,8 +90,26 @@ export function apiConfigurationFactory() {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UiInputsModule,
-    UiWidgetsModule,
+    AutocompleteComponent,
+    ButtonComponent,
+    CheckToggleComponent,
+    ChipsInputComponent,
+    CopyTextButtonComponent,
+    DragAndDropFileInputComponent,
+    DropdownSelectorComponent,
+    DropdownMultiselectComponent,
+    NavigationButtonComponent,
+    StarToggleComponent,
+    TextAreaComponent,
+    TextInputComponent,
+    ViewportIntersectorComponent,
+    BadgeComponent,
+    ColorScaleComponent,
+    LoadingMaskComponent,
+    PopupAlertComponent,
+    ProgressBarComponent,
+    SpinningLoaderComponent,
+    StepBarComponent,
     HttpClientModule,
     UtilI18nModule,
     FeatureEditorModule,

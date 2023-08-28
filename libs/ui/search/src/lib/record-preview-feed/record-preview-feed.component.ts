@@ -1,13 +1,24 @@
 import { ChangeDetectionStrategy, Component, ElementRef } from '@angular/core'
 import { RecordPreviewComponent } from '../record-preview/record-preview.component'
-import { TranslateService } from '@ngx-translate/core'
+import { TranslateModule, TranslateService } from '@ngx-translate/core'
 import Duration from 'duration-relativetimeformat'
+import { ThumbnailComponent } from '@geonetwork-ui/ui/elements'
+import { MatIconModule } from '@angular/material/icon'
+import { NgIf, NgTemplateOutlet } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-record-preview-feed',
   templateUrl: './record-preview-feed.component.html',
   styleUrls: ['./record-preview-feed.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    NgIf,
+    MatIconModule,
+    ThumbnailComponent,
+    TranslateModule,
+    NgTemplateOutlet,
+  ],
 })
 export class RecordPreviewFeedComponent extends RecordPreviewComponent {
   timeFormat = new Duration(this.translate.currentLang, {})

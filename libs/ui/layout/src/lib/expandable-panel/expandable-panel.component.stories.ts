@@ -5,17 +5,17 @@ import {
   moduleMetadata,
   StoryObj,
 } from '@storybook/angular'
-import { ExpandablePanelComponent } from './expandable-panel.component'
-import { UiLayoutModule } from '../ui-layout.module'
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { importProvidersFrom } from '@angular/core'
+import { ExpandablePanelComponent } from './expandable-panel.component'
 
 export default {
   title: 'Layout/Expandable Panel',
   component: ExpandablePanelComponent,
   decorators: [
     moduleMetadata({
-      imports: [UiLayoutModule],
+      imports: [ExpandablePanelComponent],
     }),
     applicationConfig({
       providers: [importProvidersFrom(BrowserAnimationsModule)],

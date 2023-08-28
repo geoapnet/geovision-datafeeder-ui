@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { UtilSharedModule } from '@geonetwork-ui/util/shared'
 import { TranslateModule } from '@ngx-translate/core'
 import { ContentGhostComponent } from '../content-ghost/content-ghost.component'
 import { MetadataInfoComponent } from './metadata-info.component'
@@ -11,7 +10,7 @@ describe('MetadataInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot(), UtilSharedModule],
+      imports: [TranslateModule.forRoot(), SafePipe, ImageFallbackDirective],
       declarations: [MetadataInfoComponent, ContentGhostComponent],
     }).compileComponents()
   })

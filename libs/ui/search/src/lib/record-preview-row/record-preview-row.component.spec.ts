@@ -1,6 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { UtilSharedModule } from '@geonetwork-ui/util/shared'
 import { RecordPreviewRowComponent } from './record-preview-row.component'
 import { CatalogRecord } from '@geonetwork-ui/common/domain/record'
 
@@ -11,7 +10,7 @@ describe('RecordPreviewDatahubComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RecordPreviewRowComponent],
-      imports: [UtilSharedModule],
+      imports: [SafePipe, ImageFallbackDirective],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents()
   })

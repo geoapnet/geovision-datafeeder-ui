@@ -40,8 +40,8 @@ import { HttpErrorResponse } from '@angular/common/http'
 import { switchMapWithSearchId } from '../utils/operators/search.operator'
 import { FavoritesService } from '../favorites/favorites.service'
 import { Geometry } from 'geojson'
-import { FILTER_GEOMETRY } from '../feature-search.module'
 import { RecordsRepositoryInterface } from '@geonetwork-ui/common/domain/records-repository.interface'
+import { FILTER_GEOMETRY } from '../../index'
 
 @Injectable()
 export class SearchEffects {

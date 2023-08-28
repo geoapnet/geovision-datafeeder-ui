@@ -10,15 +10,78 @@ import {
 import { Organization } from '@geonetwork-ui/common/domain/record'
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs'
 import { map, startWith, tap } from 'rxjs/operators'
-import { ORGANIZATION_URL_TOKEN } from '../feature-catalog.module'
 import { OrganizationsServiceInterface } from '@geonetwork-ui/common/domain/organizations.service.interface'
 import { SortByField } from '@geonetwork-ui/common/domain/search'
+import {
+  ContentGhostComponent,
+  PaginationComponent,
+} from '@geonetwork-ui/ui/elements'
+import {
+  OrganisationPreviewComponent,
+  OrganisationsSortComponent,
+} from '@geonetwork-ui/ui/catalog'
+import { AsyncPipe, NgFor } from '@angular/common'
+import {
+  ElasticsearchService,
+  ORGANIZATIONS_STRATEGY,
+  OrganizationsFromGroupsService,
+  OrganizationsFromMetadataService,
+  OrganizationsStrategy,
+} from '@geonetwork-ui/api/repository/gn4'
+import {
+  GroupsApiService,
+  SearchApiService,
+} from '@geonetwork-ui/data-access/gn4'
+import { TranslateService } from '@ngx-translate/core'
+import { ORGANIZATION_URL_TOKEN } from '../../index'
+
+const organizationsServiceFactory = (
+  strategy: OrganizationsStrategy,
+  esService: ElasticsearchService,
+  searchApiService: SearchApiService,
+  groupsApiService: GroupsApiService,
+  translateService: TranslateService
+) =>
+  strategy === 'groups'
+    ? new OrganizationsFromGroupsService(
+        esService,
+        searchApiService,
+        groupsApiService,
+        translateService
+      )
+    : new OrganizationsFromMetadataService(
+        esService,
+        searchApiService,
+        groupsApiService
+      )
 
 @Component({
   selector: 'gn-ui-organisations',
   templateUrl: './organisations.component.html',
   styleUrls: ['./organisations.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    OrganisationsSortComponent,
+    NgFor,
+    ContentGhostComponent,
+    OrganisationPreviewComponent,
+    PaginationComponent,
+    AsyncPipe,
+  ],
+  providers: [
+    {
+      provide: OrganizationsServiceInterface,
+      useFactory: organizationsServiceFactory,
+      deps: [
+        ORGANIZATIONS_STRATEGY,
+        ElasticsearchService,
+        SearchApiService,
+        GroupsApiService,
+        TranslateService,
+      ],
+    },
+  ],
 })
 export class OrganisationsComponent {
   @Input() itemsOnPage = 12

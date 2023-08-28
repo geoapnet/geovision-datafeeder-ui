@@ -12,7 +12,7 @@ import {
   TRANSLATE_DEFAULT_CONFIG,
   UtilI18nModule,
 } from '@geonetwork-ui/util/i18n'
-import { UtilSharedModule } from '@geonetwork-ui/util/shared'
+import { ImageFallbackDirective, SafePipe } from '@geonetwork-ui/util/shared'
 import { ThumbnailComponent } from '@geonetwork-ui/ui/elements'
 import { OrganisationPreviewComponent } from './organisation-preview.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -29,11 +29,12 @@ export default {
       ],
     }),
     moduleMetadata({
-      declarations: [ThumbnailComponent],
       imports: [
+        ThumbnailComponent,
         MatIconModule,
         UtilI18nModule,
-        UtilSharedModule,
+        SafePipe,
+        ImageFallbackDirective,
         TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
       ],
     }),

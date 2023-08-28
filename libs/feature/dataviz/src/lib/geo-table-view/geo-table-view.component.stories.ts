@@ -1,8 +1,13 @@
 import { HttpClientModule } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FeatureMapModule } from '@geonetwork-ui/feature/map'
-import { UiLayoutModule } from '@geonetwork-ui/ui/layout'
-import { UiMapModule } from '@geonetwork-ui/ui/map'
+import {
+  AnchorLinkDirective,
+  ExpandablePanelButtonComponent,
+  ExpandablePanelComponent,
+  StickyHeaderComponent,
+} from '@geonetwork-ui/ui/layout'
+import { FeatureDetailComponent, MapComponent } from '@geonetwork-ui/ui/map'
 import { TRANSLATE_DEFAULT_CONFIG } from '@geonetwork-ui/util/i18n'
 import { TranslateModule } from '@ngx-translate/core'
 import {
@@ -20,8 +25,12 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
-        UiMapModule,
-        UiLayoutModule,
+        FeatureDetailComponent,
+        MapComponent,
+        AnchorLinkDirective,
+        ExpandablePanelComponent,
+        ExpandablePanelButtonComponent,
+        StickyHeaderComponent,
         FeatureMapModule,
         TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
       ],

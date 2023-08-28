@@ -18,7 +18,6 @@ import { importProvidersFrom } from '@angular/core'
 import { ThumbnailComponent } from '../thumbnail/thumbnail.component'
 import { MatIconModule } from '@angular/material/icon'
 import { MatTooltipModule } from '@angular/material/tooltip'
-import { UtilSharedModule } from '@geonetwork-ui/util/shared'
 import { DATASET_RECORDS } from '@geonetwork-ui/common/fixtures'
 
 export default {
@@ -26,14 +25,15 @@ export default {
   component: RelatedRecordCardComponent,
   decorators: [
     moduleMetadata({
-      declarations: [ThumbnailComponent],
       imports: [
         RouterModule,
         UtilI18nModule,
         TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
         MatIconModule,
         MatTooltipModule,
-        UtilSharedModule,
+        SafePipe,
+        ThumbnailComponent,
+        ImageFallbackDirective,
       ],
       providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
     }),

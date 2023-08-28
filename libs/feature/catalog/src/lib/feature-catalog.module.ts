@@ -1,31 +1,19 @@
-import { InjectionToken, NgModule } from '@angular/core'
-import { SiteTitleComponent } from './site-title/site-title.component'
-import { UiCatalogModule } from '@geonetwork-ui/ui/catalog'
+import { NgModule } from '@angular/core'
 import {
-  ApiModule,
   GroupsApiService,
   SearchApiService,
 } from '@geonetwork-ui/data-access/gn4'
-import { CommonModule } from '@angular/common'
-import { SourceLabelComponent } from './source-label/source-label.component'
-import { UtilI18nModule } from '@geonetwork-ui/util/i18n'
-import { OrganisationsComponent } from './organisations/organisations.component'
-import { UiLayoutModule } from '@geonetwork-ui/ui/layout'
-import { TranslateModule, TranslateService } from '@ngx-translate/core'
-import { UiElementsModule } from '@geonetwork-ui/ui/elements'
+import { TranslateService } from '@ngx-translate/core'
 import { OrganizationsServiceInterface } from '@geonetwork-ui/common/domain/organizations.service.interface'
 import {
-  OrganizationsFromMetadataService,
+  ElasticsearchService,
   ORGANIZATIONS_STRATEGY,
   OrganizationsFromGroupsService,
+  OrganizationsFromMetadataService,
   OrganizationsStrategy,
-  ElasticsearchService,
 } from '@geonetwork-ui/api/repository/gn4'
 
 // expects the replacement key ${name}
-export const ORGANIZATION_URL_TOKEN = new InjectionToken<string>(
-  'organization-url-token'
-)
 
 const organizationsServiceFactory = (
   strategy: OrganizationsStrategy,
@@ -48,21 +36,6 @@ const organizationsServiceFactory = (
       )
 
 @NgModule({
-  declarations: [
-    SiteTitleComponent,
-    SourceLabelComponent,
-    OrganisationsComponent,
-  ],
-  imports: [
-    UiCatalogModule,
-    UiLayoutModule,
-    ApiModule,
-    CommonModule,
-    UtilI18nModule,
-    TranslateModule.forChild(),
-    UiElementsModule,
-  ],
-  exports: [SiteTitleComponent, SourceLabelComponent, OrganisationsComponent],
   providers: [
     {
       provide: OrganizationsServiceInterface,

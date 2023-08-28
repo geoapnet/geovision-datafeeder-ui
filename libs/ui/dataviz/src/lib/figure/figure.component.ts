@@ -1,10 +1,13 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { MatIconModule } from '@angular/material/icon'
 
 @Component({
   selector: 'gn-ui-figure',
   templateUrl: './figure.component.html',
   styleUrls: ['./figure.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [MatIconModule],
 })
 export class FigureComponent {
   @Input() icon!: string

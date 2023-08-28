@@ -12,7 +12,7 @@ import {
   FieldAggregation,
   getJsonDataItemsProxy,
 } from '@geonetwork-ui/data-fetcher'
-import { DDChoices } from '@geonetwork-ui/ui/inputs'
+import { DDChoices, DropdownSelectorComponent } from '@geonetwork-ui/ui/inputs'
 import { BehaviorSubject, combineLatest, EMPTY, Observable } from 'rxjs'
 import {
   catchError,
@@ -29,7 +29,13 @@ import {
   InputChartType,
 } from '@geonetwork-ui/common/domain/dataviz-configuration.model'
 import { DatasetDistribution } from '@geonetwork-ui/common/domain/record'
-import { TranslateService } from '@ngx-translate/core'
+import { TranslateModule, TranslateService } from '@ngx-translate/core'
+import {
+  LoadingMaskComponent,
+  PopupAlertComponent,
+} from '@geonetwork-ui/ui/widgets'
+import { AsyncPipe, NgIf } from '@angular/common'
+import { ChartComponent } from '@geonetwork-ui/ui/dataviz'
 
 marker('chart.type.bar')
 marker('chart.type.barHorizontal')
@@ -48,6 +54,16 @@ marker('chart.aggregation.count')
   templateUrl: './chart-view.component.html',
   styleUrls: ['./chart-view.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    DropdownSelectorComponent,
+    NgIf,
+    ChartComponent,
+    LoadingMaskComponent,
+    PopupAlertComponent,
+    AsyncPipe,
+    TranslateModule,
+  ],
 })
 export class ChartViewComponent {
   @Input() set link(value: DatasetDistribution) {

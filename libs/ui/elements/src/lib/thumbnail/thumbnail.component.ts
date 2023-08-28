@@ -12,6 +12,9 @@ import {
   ViewChild,
 } from '@angular/core'
 
+import { NgClass, NgStyle } from '@angular/common'
+import { SafePipe } from '@geonetwork-ui/util/shared'
+
 export const THUMBNAIL_PLACEHOLDER = new InjectionToken<string>(
   'thumbnail-placeholder'
 )
@@ -30,6 +33,8 @@ type FitOptions = 'cover' | 'contain' | 'scale-down'
   selector: 'gn-ui-thumbnail',
   templateUrl: './thumbnail.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [SafePipe, NgClass, NgStyle],
 })
 export class ThumbnailComponent implements OnInit, OnChanges {
   @Input() thumbnailUrl: string | string[]

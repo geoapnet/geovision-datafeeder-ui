@@ -12,9 +12,14 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core'
-import { UntypedFormControl } from '@angular/forms'
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  UntypedFormControl,
+} from '@angular/forms'
 import {
   MatAutocomplete,
+  MatAutocompleteModule,
   MatAutocompleteSelectedEvent,
   MatAutocompleteTrigger,
 } from '@angular/material/autocomplete'
@@ -31,6 +36,11 @@ import {
   take,
   tap,
 } from 'rxjs/operators'
+import { MatOptionModule } from '@angular/material/core'
+import { TranslateModule } from '@ngx-translate/core'
+import { MatIconModule } from '@angular/material/icon'
+import { AsyncPipe, NgFor, NgIf } from '@angular/common'
+import { PopupAlertComponent } from '@geonetwork-ui/ui/widgets'
 
 export type AutocompleteItem = unknown
 
@@ -39,6 +49,19 @@ export type AutocompleteItem = unknown
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    FormsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    NgIf,
+    MatIconModule,
+    PopupAlertComponent,
+    TranslateModule,
+    NgFor,
+    MatOptionModule,
+    AsyncPipe,
+  ],
 })
 export class AutocompleteComponent
   implements OnInit, AfterViewInit, OnDestroy, OnChanges

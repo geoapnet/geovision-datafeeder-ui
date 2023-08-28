@@ -12,6 +12,7 @@ import {
 import {
   FEATURE_MAP_OPTIONS,
   FeatureInfoService,
+  MapContextComponent,
   MapContextLayerTypeEnum,
   MapContextModel,
   MapManagerService,
@@ -31,12 +32,15 @@ import VectorLayer from 'ol/layer/Vector'
 import VectorSource from 'ol/source/Vector'
 import Style from 'ol/style/Style'
 import { Subscription } from 'rxjs'
+import { FeatureDetailComponent } from '@geonetwork-ui/ui/map'
 
 @Component({
   selector: 'gn-ui-geo-table-view',
   templateUrl: './geo-table-view.component.html',
   styleUrls: ['./geo-table-view.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [TableComponent, MapContextComponent, FeatureDetailComponent],
 })
 export class GeoTableViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() data: FeatureCollection = { type: 'FeatureCollection', features: [] }

@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { UiMapModule } from '@geonetwork-ui/ui/map'
+import { FeatureDetailComponent, MapComponent } from '@geonetwork-ui/ui/map'
 import {
   applicationConfig,
   componentWrapperDecorator,
@@ -15,13 +15,19 @@ import {
 } from '../map-context.fixtures'
 import { MapContextComponent } from './map-context.component'
 import { importProvidersFrom } from '@angular/core'
+import { TranslateModule } from '@ngx-translate/core'
+import { TRANSLATE_DEFAULT_CONFIG } from '@geonetwork-ui/util/i18n'
 
 export default {
   title: 'Map/MapContext',
   component: MapContextComponent,
   decorators: [
     moduleMetadata({
-      imports: [UiMapModule],
+      imports: [
+        FeatureDetailComponent,
+        MapComponent,
+        TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
+      ],
     }),
     applicationConfig({
       providers: [

@@ -7,6 +7,7 @@ import {
 } from '@angular/core'
 import {
   FeatureInfoService,
+  MapContextComponent,
   MapContextLayerModel,
   MapContextLayerTypeEnum,
   MapContextModel,
@@ -38,12 +39,35 @@ import {
 import { MdViewFacade } from '../state/mdview.facade'
 import { DataService } from '@geonetwork-ui/feature/dataviz'
 import { DatasetDistribution } from '@geonetwork-ui/common/domain/record'
+import { AsyncPipe, NgIf } from '@angular/common'
+import { DropdownSelectorComponent } from '@geonetwork-ui/ui/inputs'
+import { ExternalViewerButtonComponent } from '../external-viewer-button/external-viewer-button.component'
+import { MatIconModule } from '@angular/material/icon'
+import { FeatureDetailComponent } from '@geonetwork-ui/ui/map'
+import {
+  LoadingMaskComponent,
+  PopupAlertComponent,
+} from '@geonetwork-ui/ui/widgets'
+import { TranslateModule } from '@ngx-translate/core'
 
 @Component({
   selector: 'gn-ui-map-view',
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    DropdownSelectorComponent,
+    ExternalViewerButtonComponent,
+    MapContextComponent,
+    MatIconModule,
+    FeatureDetailComponent,
+    NgIf,
+    LoadingMaskComponent,
+    PopupAlertComponent,
+    TranslateModule,
+    AsyncPipe,
+  ],
 })
 export class MapViewComponent implements OnInit, OnDestroy {
   mapConfig: MapConfig = getOptionalMapConfig()

@@ -16,12 +16,15 @@ import { MapManagerService } from '../../manager/map-manager.service'
 import { MapContextModel } from '../map-context.model'
 import { MapContextService } from '../map-context.service'
 import { MapConfig } from '@geonetwork-ui/util/app-config'
+import { MapComponent } from '@geonetwork-ui/ui/map'
 
 @Component({
   selector: 'gn-ui-map-context',
   templateUrl: './map-context.component.html',
   styleUrls: ['./map-context.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [MapComponent],
 })
 export class MapContextComponent implements OnChanges {
   @Input() context: MapContextModel

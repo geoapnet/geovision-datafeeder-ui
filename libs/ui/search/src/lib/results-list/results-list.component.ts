@@ -11,12 +11,16 @@ import {
   ResultsLayoutConfigItem,
 } from './results-layout.config'
 import { CatalogRecord } from '@geonetwork-ui/common/domain/record'
+import { NgClass, NgFor } from '@angular/common'
+import { ResultsListItemComponent } from '../results-list-item/results-list-item.component'
 
 @Component({
   selector: 'gn-ui-results-list',
   templateUrl: './results-list.component.html',
   styleUrls: ['./results-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgClass, NgFor, ResultsListItemComponent],
 })
 export class ResultsListComponent {
   @Input() records: CatalogRecord[]

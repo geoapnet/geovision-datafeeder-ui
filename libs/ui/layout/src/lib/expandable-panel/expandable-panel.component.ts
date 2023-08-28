@@ -1,16 +1,20 @@
 import {
-  Component,
   ChangeDetectionStrategy,
+  Component,
+  ElementRef,
   Input,
   ViewChild,
-  ElementRef,
 } from '@angular/core'
+import { MatIconModule } from '@angular/material/icon'
+import { NgClass, NgIf } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-expandable-panel',
   templateUrl: './expandable-panel.component.html',
   styleUrls: ['./expandable-panel.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, MatIconModule, NgClass],
 })
 export class ExpandablePanelComponent {
   @Input() title: string

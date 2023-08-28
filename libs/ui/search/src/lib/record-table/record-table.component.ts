@@ -1,11 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
 import { DATASET_RECORDS } from '@geonetwork-ui/common/fixtures'
 import { CatalogRecord } from '@geonetwork-ui/common/domain/record'
+import { TranslateModule } from '@ngx-translate/core'
+import { NgFor } from '@angular/common'
+import { MatIconModule } from '@angular/material/icon'
 
 @Component({
   selector: 'gn-ui-record-table',
   templateUrl: './record-table.component.html',
   styleUrls: ['./record-table.component.css'],
+  standalone: true,
+  imports: [TranslateModule, NgFor, MatIconModule],
 })
 export class RecordTableComponent {
   @Input() records: CatalogRecord[] = DATASET_RECORDS

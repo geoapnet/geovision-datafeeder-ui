@@ -23,7 +23,12 @@ describe('MainSearchComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SearchPageComponent],
-      imports: [UiLayoutModule],
+      imports: [
+        AnchorLinkDirective,
+        ExpandablePanelComponent,
+        ExpandablePanelButtonComponent,
+        StickyHeaderComponent,
+      ],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         {

@@ -1,12 +1,15 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core'
 import { Observable } from 'rxjs'
 import { SourcesService } from '../sources/sources.service'
+import { AsyncPipe } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-source-label',
   templateUrl: './source-label.component.html',
   styleUrls: ['./source-label.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [AsyncPipe],
 })
 export class SourceLabelComponent {
   sourceLabel$: Observable<string>

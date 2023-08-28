@@ -9,34 +9,20 @@ import { TranslateModule } from '@ngx-translate/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CommonModule } from '@angular/common'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import {
-  DeleteIconComponent,
-  TagComponent,
-  TagInputComponent,
-  TagInputModule,
-} from 'ngx-chips'
+import { TagInputModule } from 'ngx-chips'
 import {
   TRANSLATE_DEFAULT_CONFIG,
   UtilI18nModule,
 } from '@geonetwork-ui/util/i18n'
 import { importProvidersFrom } from '@angular/core'
-import { MatIcon } from '@angular/material/icon'
 
 export default {
   title: 'Inputs/ChipsInputComponent',
   component: ChipsInputComponent,
   decorators: [
     moduleMetadata({
-      declarations: [
-        TagInputComponent,
-        TagComponent,
-        MatIcon,
-        DeleteIconComponent,
-      ],
       imports: [
-        FormsModule,
-        ReactiveFormsModule,
+        ChipsInputComponent,
         UtilI18nModule,
         TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
       ],

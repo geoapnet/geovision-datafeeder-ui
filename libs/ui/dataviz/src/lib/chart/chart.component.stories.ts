@@ -11,7 +11,6 @@ import {
 import { TRANSLATE_DEFAULT_CONFIG } from '@geonetwork-ui/util/i18n'
 import { ChartComponent } from './chart.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { UiDatavizModule } from '../ui-dataviz.module'
 import { importProvidersFrom } from '@angular/core'
 
 const meta: Meta<ChartComponent> = {
@@ -23,7 +22,6 @@ const meta: Meta<ChartComponent> = {
     }),
     applicationConfig({
       providers: [
-        importProvidersFrom(UiDatavizModule),
         importProvidersFrom(BrowserAnimationsModule),
         importProvidersFrom(HttpClientModule),
       ],

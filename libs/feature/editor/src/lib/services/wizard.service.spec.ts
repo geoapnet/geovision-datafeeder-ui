@@ -5,7 +5,21 @@ import { TranslateModule } from '@ngx-translate/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { NO_ERRORS_SCHEMA } from '@angular/core'
-import { UiInputsModule } from '@geonetwork-ui/ui/inputs'
+import {
+  AutocompleteComponent,
+  ButtonComponent,
+  CheckToggleComponent,
+  ChipsInputComponent,
+  CopyTextButtonComponent,
+  DragAndDropFileInputComponent,
+  DropdownMultiselectComponent,
+  DropdownSelectorComponent,
+  NavigationButtonComponent,
+  StarToggleComponent,
+  TextAreaComponent,
+  TextInputComponent,
+  ViewportIntersectorComponent,
+} from '@geonetwork-ui/ui/inputs'
 
 const localStorageMock = () => {
   let storage = {}
@@ -24,7 +38,19 @@ describe('WizardService', () => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot(),
-        UiInputsModule,
+        AutocompleteComponent,
+        ButtonComponent,
+        CheckToggleComponent,
+        ChipsInputComponent,
+        CopyTextButtonComponent,
+        DragAndDropFileInputComponent,
+        DropdownSelectorComponent,
+        DropdownMultiselectComponent,
+        NavigationButtonComponent,
+        StarToggleComponent,
+        TextAreaComponent,
+        TextInputComponent,
+        ViewportIntersectorComponent,
         BrowserModule,
         HttpClientTestingModule,
       ],

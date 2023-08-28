@@ -10,7 +10,21 @@ import { NO_ERRORS_SCHEMA } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { PublishStatusEnumApiModel } from '@geonetwork-ui/data-access/datafeeder'
 import { of } from 'rxjs'
-import { UiInputsModule } from '@geonetwork-ui/ui/inputs'
+import {
+  AutocompleteComponent,
+  ButtonComponent,
+  CheckToggleComponent,
+  ChipsInputComponent,
+  CopyTextButtonComponent,
+  DragAndDropFileInputComponent,
+  DropdownMultiselectComponent,
+  DropdownSelectorComponent,
+  NavigationButtonComponent,
+  StarToggleComponent,
+  TextAreaComponent,
+  TextInputComponent,
+  ViewportIntersectorComponent,
+} from '@geonetwork-ui/ui/inputs'
 
 const GN_LINK =
   'https://georchestra-127-0-1-1.traefik.me/geonetwork/srv/eng/catalog.search#/metadata/68ef889e-7bcd-434e-880b-606de90f673b'
@@ -52,7 +66,21 @@ describe('SuccessPublishPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SuccessPublishPageComponent],
-      imports: [UiInputsModule],
+      imports: [
+        AutocompleteComponent,
+        ButtonComponent,
+        CheckToggleComponent,
+        ChipsInputComponent,
+        CopyTextButtonComponent,
+        DragAndDropFileInputComponent,
+        DropdownSelectorComponent,
+        DropdownMultiselectComponent,
+        NavigationButtonComponent,
+        StarToggleComponent,
+        TextAreaComponent,
+        TextInputComponent,
+        ViewportIntersectorComponent,
+      ],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         {

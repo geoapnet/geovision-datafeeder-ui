@@ -20,6 +20,7 @@ import { CatalogRecord } from '@geonetwork-ui/common/domain/record'
   templateUrl: './results-list-item.component.html',
   styleUrls: ['./results-list-item.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class ResultsListItemComponent implements OnChanges, AfterViewInit {
   @Input() layoutConfig: ResultsLayoutConfigItem

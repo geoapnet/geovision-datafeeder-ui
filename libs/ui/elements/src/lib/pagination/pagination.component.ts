@@ -7,12 +7,19 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core'
+import { MatIconModule } from '@angular/material/icon'
+import { FormsModule } from '@angular/forms'
+import { TranslateModule } from '@ngx-translate/core'
+import { ButtonComponent } from '@geonetwork-ui/ui/inputs'
+import { NgIf } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, ButtonComponent, TranslateModule, FormsModule, MatIconModule],
 })
 export class PaginationComponent implements OnChanges {
   @Input() currentPage = 1

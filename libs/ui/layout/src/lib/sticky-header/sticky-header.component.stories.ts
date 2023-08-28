@@ -5,7 +5,6 @@ import {
   moduleMetadata,
   StoryObj,
 } from '@storybook/angular'
-import { UiLayoutModule } from '../ui-layout.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { StickyHeaderComponent } from './sticky-header.component'
 import { importProvidersFrom } from '@angular/core'
@@ -15,7 +14,7 @@ export default {
   component: StickyHeaderComponent,
   decorators: [
     moduleMetadata({
-      imports: [UiLayoutModule],
+      imports: [StickyHeaderComponent],
     }),
     applicationConfig({
       providers: [importProvidersFrom(BrowserAnimationsModule)],

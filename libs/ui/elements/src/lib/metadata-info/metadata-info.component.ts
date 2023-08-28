@@ -5,16 +5,32 @@ import {
   Input,
   Output,
 } from '@angular/core'
-import {
-  DatasetDistribution,
-  DatasetRecord,
-} from '@geonetwork-ui/common/domain/record'
+import { DatasetRecord } from '@geonetwork-ui/common/domain/record'
+
+import { MatIconModule } from '@angular/material/icon'
+import { ExpandablePanelComponent } from '@geonetwork-ui/ui/layout'
+import { BadgeComponent } from '@geonetwork-ui/ui/widgets'
+import { NgFor, NgIf } from '@angular/common'
+import { ContentGhostComponent } from '../content-ghost/content-ghost.component'
+import { TranslateModule } from '@ngx-translate/core'
+import { SafePipe } from '@geonetwork-ui/util/shared'
 
 @Component({
   selector: 'gn-ui-metadata-info',
   templateUrl: './metadata-info.component.html',
   styleUrls: ['./metadata-info.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    TranslateModule,
+    ContentGhostComponent,
+    NgIf,
+    NgFor,
+    BadgeComponent,
+    ExpandablePanelComponent,
+    MatIconModule,
+    SafePipe,
+  ],
 })
 export class MetadataInfoComponent {
   @Input() metadata: Partial<DatasetRecord>

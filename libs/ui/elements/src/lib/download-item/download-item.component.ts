@@ -1,17 +1,22 @@
 import {
-  Component,
   ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
   Input,
   Output,
-  EventEmitter,
 } from '@angular/core'
 import { DatasetDistribution } from '@geonetwork-ui/common/domain/record'
+import { NgIf } from '@angular/common'
+import { MatIconModule } from '@angular/material/icon'
+import { TranslateModule } from '@ngx-translate/core'
 
 @Component({
-  selector: 'gn-ui-download-item',
-  templateUrl: './download-item.component.html',
-  styleUrls: ['./download-item.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIf, TranslateModule, MatIconModule],
+  selector: 'gn-ui-download-item',
+  standalone: true,
+  styleUrls: ['./download-item.component.css'],
+  templateUrl: './download-item.component.html',
 })
 export class DownloadItemComponent {
   @Input() link: DatasetDistribution

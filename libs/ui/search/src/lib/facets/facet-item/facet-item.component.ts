@@ -1,9 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { TranslateModule } from '@ngx-translate/core'
+import { NgIf } from '@angular/common'
+import { FormsModule } from '@angular/forms'
 
 @Component({
   selector: 'gn-ui-facet-item',
   templateUrl: './facet-item.component.html',
   styleUrls: ['./facet-item.component.css'],
+  standalone: true,
+  imports: [FormsModule, NgIf, TranslateModule],
 })
 export class FacetItemComponent {
   @Input() label: string

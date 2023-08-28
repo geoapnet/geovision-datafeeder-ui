@@ -6,17 +6,25 @@ import {
   StoryObj,
 } from '@storybook/angular'
 import { ExpandablePanelButtonComponent } from './expandable-panel-button.component'
-import { UiLayoutModule } from '../ui-layout.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatIconModule } from '@angular/material/icon'
 import { importProvidersFrom } from '@angular/core'
+import { AnchorLinkDirective } from '../anchor-link/anchor-link.directive'
+import { ExpandablePanelComponent } from '../expandable-panel/expandable-panel.component'
+import { StickyHeaderComponent } from '../sticky-header/sticky-header.component'
 
 export default {
   title: 'Layout/Expandable Panel Button',
   component: ExpandablePanelButtonComponent,
   decorators: [
     moduleMetadata({
-      imports: [UiLayoutModule, MatIconModule],
+      imports: [
+        AnchorLinkDirective,
+        ExpandablePanelComponent,
+        ExpandablePanelButtonComponent,
+        StickyHeaderComponent,
+        MatIconModule,
+      ],
     }),
     applicationConfig({
       providers: [importProvidersFrom(BrowserAnimationsModule)],

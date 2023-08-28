@@ -4,10 +4,15 @@ import { SortByEnum, SortByField } from '@geonetwork-ui/common/domain/search'
 import { SearchFacade } from '../state/search.facade'
 import { SearchService } from '../utils/service/search.service'
 import { filter, map } from 'rxjs/operators'
+import { DropdownSelectorComponent } from '@geonetwork-ui/ui/inputs'
+import { AsyncPipe } from '@angular/common'
+import { TranslateModule } from '@ngx-translate/core'
 
 @Component({
   selector: 'gn-ui-sort-by',
   templateUrl: './sort-by.component.html',
+  standalone: true,
+  imports: [DropdownSelectorComponent, AsyncPipe, TranslateModule],
 })
 export class SortByComponent {
   choices = [

@@ -1,11 +1,13 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
   Output,
 } from '@angular/core'
+import { TranslateModule } from '@ngx-translate/core'
+import { FormsModule } from '@angular/forms'
+import { NgClass, NgFor, NgIf } from '@angular/common'
 
 export type DDChoices = Array<{
   label: string
@@ -17,6 +19,8 @@ export type DDChoices = Array<{
   templateUrl: './dropdown-selector.component.html',
   styleUrls: ['./dropdown-selector.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, NgClass, NgFor, FormsModule, TranslateModule],
 })
 export class DropdownSelectorComponent {
   @Input() title: string

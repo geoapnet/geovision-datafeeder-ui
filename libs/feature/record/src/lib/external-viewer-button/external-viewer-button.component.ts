@@ -1,12 +1,18 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { MapConfig } from '@geonetwork-ui/util/app-config'
 import { DatasetDistribution } from '@geonetwork-ui/common/domain/record'
+import { ButtonComponent } from '@geonetwork-ui/ui/inputs'
+import { NgIf } from '@angular/common'
+import { MatIconModule } from '@angular/material/icon'
+import { TranslateModule } from '@ngx-translate/core'
 
 @Component({
   selector: 'gn-ui-external-viewer-button',
   templateUrl: './external-viewer-button.component.html',
   styleUrls: ['./external-viewer-button.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, ButtonComponent, MatIconModule, TranslateModule],
 })
 export class ExternalViewerButtonComponent {
   @Input() link: DatasetDistribution

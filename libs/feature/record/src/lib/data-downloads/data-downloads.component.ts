@@ -8,12 +8,16 @@ import {
   DatasetDistribution,
   DatasetServiceDistribution,
 } from '@geonetwork-ui/common/domain/record'
+import { DownloadsListComponent } from '@geonetwork-ui/ui/elements'
+import { AsyncPipe, NgIf } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-data-downloads',
   templateUrl: './data-downloads.component.html',
   styleUrls: ['./data-downloads.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, DownloadsListComponent, AsyncPipe],
 })
 export class DataDownloadsComponent {
   constructor(public facade: MdViewFacade, private dataService: DataService) {}

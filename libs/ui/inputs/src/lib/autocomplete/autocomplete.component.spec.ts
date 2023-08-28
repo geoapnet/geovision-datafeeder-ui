@@ -9,7 +9,15 @@ import {
   AutocompleteComponent,
   AutocompleteItem,
 } from './autocomplete.component'
-import { UiWidgetsModule } from '@geonetwork-ui/ui/widgets'
+import {
+  BadgeComponent,
+  ColorScaleComponent,
+  LoadingMaskComponent,
+  PopupAlertComponent,
+  ProgressBarComponent,
+  SpinningLoaderComponent,
+  StepBarComponent,
+} from '@geonetwork-ui/ui/widgets'
 
 describe('AutocompleteComponent', () => {
   let component: AutocompleteComponent
@@ -21,7 +29,13 @@ describe('AutocompleteComponent', () => {
         MatAutocompleteModule,
         ReactiveFormsModule,
         MatIconModule,
-        UiWidgetsModule,
+        BadgeComponent,
+        ColorScaleComponent,
+        LoadingMaskComponent,
+        PopupAlertComponent,
+        ProgressBarComponent,
+        SpinningLoaderComponent,
+        StepBarComponent,
       ],
       declarations: [AutocompleteComponent],
     })

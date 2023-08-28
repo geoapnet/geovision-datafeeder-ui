@@ -1,7 +1,14 @@
 /*
  * Public API Surface of catalog
  */
+import { InjectionToken } from '@angular/core'
+
 export * from './lib/feature-catalog.module'
 export * from './lib/sources/sources.service'
 export * from './lib/sources/sources.model'
 export * from './lib/records/records.service'
+export * from './lib/organisations/organisations.component'
+
+export const ORGANIZATION_URL_TOKEN = new InjectionToken<string>(
+  'organization-url-token'
+)

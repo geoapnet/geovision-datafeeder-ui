@@ -11,12 +11,16 @@ import { SearchFacade } from '../state/search.facade'
 import { SearchService } from '../utils/service/search.service'
 import { FieldsService } from '../utils/service/fields.service'
 import { FieldAvailableValue } from '../utils/service/fields'
+import { AsyncPipe } from '@angular/common'
+import { DropdownMultiselectComponent } from '@geonetwork-ui/ui/inputs'
 
 @Component({
   selector: 'gn-ui-filter-dropdown',
   templateUrl: './filter-dropdown.component.html',
   styleUrls: ['./filter-dropdown.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [DropdownMultiselectComponent, AsyncPipe],
 })
 export class FilterDropdownComponent implements OnInit {
   @Input() fieldName: string

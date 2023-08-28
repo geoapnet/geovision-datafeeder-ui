@@ -9,6 +9,8 @@ import {
   ResultsLayoutConfigItem,
 } from '@geonetwork-ui/ui/search'
 import { AddLayerRecordPreviewComponent } from './add-layer-record-preview/add-layer-record-preview.component'
+import { ResultsListContainerComponent } from '@geonetwork-ui/feature/search'
+import { FuzzySearchComponent } from '@geonetwork-ui/feature/search'
 
 @Component({
   selector: 'gn-ui-add-layer-from-catalog',
@@ -30,6 +32,8 @@ import { AddLayerRecordPreviewComponent } from './add-layer-record-preview/add-l
       },
     },
   ],
+  standalone: true,
+  imports: [FuzzySearchComponent, ResultsListContainerComponent],
 })
 export class AddLayerFromCatalogComponent implements OnInit {
   constructor(private searchFacade: SearchFacade) {}

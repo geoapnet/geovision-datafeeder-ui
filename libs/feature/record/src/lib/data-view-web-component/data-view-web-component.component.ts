@@ -2,12 +2,17 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core'
 import { Configuration } from '@geonetwork-ui/data-access/gn4'
 import { MdViewFacade } from '../state'
 import { combineLatest, map } from 'rxjs'
+import { TranslateModule } from '@ngx-translate/core'
+import { AsyncPipe } from '@angular/common'
+import { CopyTextButtonComponent } from '@geonetwork-ui/ui/inputs'
 
 @Component({
   selector: 'gn-ui-data-view-web-component',
   templateUrl: './data-view-web-component.component.html',
   styleUrls: ['./data-view-web-component.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CopyTextButtonComponent, AsyncPipe, TranslateModule],
 })
 export class DataViewWebComponentComponent {
   webComponentHtml$ = combineLatest(

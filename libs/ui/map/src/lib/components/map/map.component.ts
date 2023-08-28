@@ -10,12 +10,17 @@ import {
 import Map from 'ol/Map'
 import { fromEvent, merge, Observable, of, timer } from 'rxjs'
 import { delay, map, startWith, switchMap } from 'rxjs/operators'
+import { TranslateModule } from '@ngx-translate/core'
+import { MatIconModule } from '@angular/material/icon'
+import { AsyncPipe, NgClass } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgClass, MatIconModule, TranslateModule, AsyncPipe],
 })
 export class MapComponent implements OnInit, AfterViewInit {
   @Input() map: Map

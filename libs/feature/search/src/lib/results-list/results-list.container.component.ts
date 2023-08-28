@@ -11,14 +11,26 @@ import { Observable } from 'rxjs'
 import { filter, map } from 'rxjs/operators'
 import { SearchFacade } from '../state/search.facade'
 import { SearchError } from '../state/reducer'
-import { ErrorType } from '@geonetwork-ui/ui/elements'
+import {
+  ErrorType,
+  SearchResultsErrorComponent,
+} from '@geonetwork-ui/ui/elements'
 import {
   RESULTS_LAYOUT_CONFIG,
   ResultsLayoutConfigItem,
   ResultsLayoutConfigModel,
+  ResultsListComponent,
 } from '@geonetwork-ui/ui/search'
-import { RECORD_URL_TOKEN } from '../feature-search.module'
 import { CatalogRecord } from '@geonetwork-ui/common/domain/record'
+import {
+  ButtonComponent,
+  ViewportIntersectorComponent,
+} from '@geonetwork-ui/ui/inputs'
+import { AsyncPipe, NgIf } from '@angular/common'
+import { TranslateModule } from '@ngx-translate/core'
+import { SpinningLoaderComponent } from '@geonetwork-ui/ui/widgets'
+import { FavoriteStarComponent } from '../favorites/favorite-star/favorite-star.component'
+import { RECORD_URL_TOKEN } from '../../index'
 
 export type ResultsListShowMoreStrategy = 'auto' | 'button' | 'none'
 
@@ -26,6 +38,18 @@ export type ResultsListShowMoreStrategy = 'auto' | 'button' | 'none'
   selector: 'gn-ui-results-list-container',
   templateUrl: './results-list.container.component.html',
   styleUrls: ['./results-list.container.component.css'],
+  standalone: true,
+  imports: [
+    NgIf,
+    ResultsListComponent,
+    ButtonComponent,
+    TranslateModule,
+    ViewportIntersectorComponent,
+    SpinningLoaderComponent,
+    SearchResultsErrorComponent,
+    FavoriteStarComponent,
+    AsyncPipe,
+  ],
 })
 export class ResultsListContainerComponent implements OnInit {
   @Input() layout: string

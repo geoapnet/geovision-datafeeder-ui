@@ -7,7 +7,21 @@ import { WizardFieldType } from '../../models/wizard-field.type'
 import { BrowserModule, By } from '@angular/platform-browser'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { WizardService } from '../../services/wizard.service'
-import { UiInputsModule } from '@geonetwork-ui/ui/inputs'
+import {
+  AutocompleteComponent,
+  ButtonComponent,
+  CheckToggleComponent,
+  ChipsInputComponent,
+  CopyTextButtonComponent,
+  DragAndDropFileInputComponent,
+  DropdownMultiselectComponent,
+  DropdownSelectorComponent,
+  NavigationButtonComponent,
+  StarToggleComponent,
+  TextAreaComponent,
+  TextInputComponent,
+  ViewportIntersectorComponent,
+} from '@geonetwork-ui/ui/inputs'
 
 const DEFAULT_CHIPS_ITEMS_URL = (keys) =>
   `https://apps.titellus.net/geonetwork/srv/api/registries/vocabularies/search?type=CONTAINS&thesaurus=external.place.regions&rows=200&q=${keys}&uri=*QUERY*&lang=eng`
@@ -24,7 +38,19 @@ describe('WizardFieldsComponent', () => {
       declarations: [WizardFieldComponent],
       imports: [
         TranslateModule.forRoot(),
-        UiInputsModule,
+        AutocompleteComponent,
+        ButtonComponent,
+        CheckToggleComponent,
+        ChipsInputComponent,
+        CopyTextButtonComponent,
+        DragAndDropFileInputComponent,
+        DropdownSelectorComponent,
+        DropdownMultiselectComponent,
+        NavigationButtonComponent,
+        StarToggleComponent,
+        TextAreaComponent,
+        TextInputComponent,
+        ViewportIntersectorComponent,
         BrowserModule,
         HttpClientTestingModule,
       ],

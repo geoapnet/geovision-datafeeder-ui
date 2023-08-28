@@ -7,12 +7,16 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core'
+import { MatIconModule } from '@angular/material/icon'
+import { NgClass } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-popup-alert',
   templateUrl: './popup-alert.component.html',
   styleUrls: ['./popup-alert.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgClass, MatIconModule],
 })
 export class PopupAlertComponent implements OnInit {
   @Input() icon: string

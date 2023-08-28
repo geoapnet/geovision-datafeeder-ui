@@ -1,2 +1,5 @@
-export * from './lib/ui-catalog.module'
+export * from './lib/catalog-title/catalog-title.component'
+export * from './lib/language-switcher/language-switcher.component'
+export * from './lib/organisation-preview/organisation-preview.component'
+export * from './lib/organisations-sort/organisations-sort.component'
 export { LANGUAGES_LIST } from './lib/language-switcher/language-switcher.component'

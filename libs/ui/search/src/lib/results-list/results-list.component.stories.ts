@@ -6,12 +6,6 @@ import {
 } from '@storybook/angular'
 import { DEFAULT_RESULTS_LAYOUT_CONFIG } from './results-layout.config'
 import { ResultsListComponent } from './results-list.component'
-import { UtilSharedModule } from '@geonetwork-ui/util/shared'
-import { RecordPreviewListComponent } from '../record-preview-list/record-preview-list.component'
-import { RecordPreviewCardComponent } from '../record-preview-card/record-preview-card.component'
-import { RecordPreviewTextComponent } from '../record-preview-text/record-preview-text.component'
-import { RecordPreviewTitleComponent } from '../record-preview-title/record-preview-title.component'
-import { ResultsListItemComponent } from '../results-list-item/results-list-item.component'
 import {
   TRANSLATE_DEFAULT_CONFIG,
   UtilI18nModule,
@@ -25,20 +19,14 @@ export default {
   component: ResultsListComponent,
   decorators: [
     moduleMetadata({
-      declarations: [
-        RecordPreviewListComponent,
-        RecordPreviewCardComponent,
-        RecordPreviewTextComponent,
-        RecordPreviewTitleComponent,
-        ResultsListItemComponent,
-      ],
       imports: [
+        ResultsListComponent,
         UtilI18nModule,
         TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
       ],
     }),
     applicationConfig({
-      providers: [importProvidersFrom(UtilSharedModule)],
+      providers: [importProvidersFrom(SafePipe, ImageFallbackDirective)],
     }),
   ],
 } as Meta<ResultsListComponent>
@@ -62,6 +50,7 @@ export const Primary: StoryObj<ResultsListComponentWithKey> = {
     props: {
       ...args,
       layoutConfig: DEFAULT_RESULTS_LAYOUT_CONFIG[args.layoutConfigKey],
+      recordUrlGetter: () => '',
     },
   }),
 }

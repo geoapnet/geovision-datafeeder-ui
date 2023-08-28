@@ -10,30 +10,25 @@ import {
   StoryObj,
 } from '@storybook/angular'
 import { ChartViewComponent } from './chart-view.component'
-import { ChartComponent, UiDatavizModule } from '@geonetwork-ui/ui/dataviz'
+import { ChartComponent } from '@geonetwork-ui/ui/dataviz'
 import { LoadingMaskComponent } from '@geonetwork-ui/ui/widgets'
 import { importProvidersFrom } from '@angular/core'
 import { DropdownSelectorComponent } from '@geonetwork-ui/ui/inputs'
-import { MatProgressSpinner } from '@angular/material/progress-spinner'
 
 export default {
   title: 'Smart/Dataviz/ChartView',
   component: ChartViewComponent,
   decorators: [
     moduleMetadata({
-      declarations: [
-        DropdownSelectorComponent,
-        LoadingMaskComponent,
-        MatProgressSpinner,
-      ],
       imports: [
+        LoadingMaskComponent,
+        DropdownSelectorComponent,
         ChartComponent,
         TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
       ],
     }),
     applicationConfig({
       providers: [
-        importProvidersFrom(UiDatavizModule),
         importProvidersFrom(BrowserAnimationsModule),
         importProvidersFrom(HttpClientModule),
       ],

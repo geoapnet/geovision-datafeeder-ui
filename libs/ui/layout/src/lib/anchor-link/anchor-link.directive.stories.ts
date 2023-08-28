@@ -10,7 +10,7 @@ export default {
   title: 'Layout/AnchorLinkDirective',
   decorators: [
     moduleMetadata({
-      declarations: [AnchorLinkDirective],
+      declarations: [],
     }),
     componentWrapperDecorator(
       (story) => `

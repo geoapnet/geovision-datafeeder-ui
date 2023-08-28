@@ -4,8 +4,30 @@ import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { WizardComponent } from './components/wizard/wizard.component'
 import { WizardFieldComponent } from './components/wizard-field/wizard-field.component'
-import { UiInputsModule } from '@geonetwork-ui/ui/inputs'
-import { UiWidgetsModule } from '@geonetwork-ui/ui/widgets'
+import {
+  AutocompleteComponent,
+  ButtonComponent,
+  CheckToggleComponent,
+  ChipsInputComponent,
+  CopyTextButtonComponent,
+  DragAndDropFileInputComponent,
+  DropdownMultiselectComponent,
+  DropdownSelectorComponent,
+  NavigationButtonComponent,
+  StarToggleComponent,
+  TextAreaComponent,
+  TextInputComponent,
+  ViewportIntersectorComponent,
+} from '@geonetwork-ui/ui/inputs'
+import {
+  BadgeComponent,
+  ColorScaleComponent,
+  LoadingMaskComponent,
+  PopupAlertComponent,
+  ProgressBarComponent,
+  SpinningLoaderComponent,
+  StepBarComponent,
+} from '@geonetwork-ui/ui/widgets'
 import { BrowserModule } from '@angular/platform-browser'
 import { TranslateModule } from '@ngx-translate/core'
 import { WizardSummarizeComponent } from './components/wizard-summarize/wizard-summarize.component'
@@ -14,16 +36,28 @@ import { RecordFormComponent } from './record-form/record-form.component'
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http'
 
 @NgModule({
-  declarations: [
-    WizardComponent,
-    WizardFieldComponent,
-    WizardSummarizeComponent,
-    RecordFormComponent,
-  ],
   imports: [
     BrowserModule,
-    UiInputsModule,
-    UiWidgetsModule,
+    AutocompleteComponent,
+    ButtonComponent,
+    CheckToggleComponent,
+    ChipsInputComponent,
+    CopyTextButtonComponent,
+    DragAndDropFileInputComponent,
+    DropdownSelectorComponent,
+    DropdownMultiselectComponent,
+    NavigationButtonComponent,
+    StarToggleComponent,
+    TextAreaComponent,
+    TextInputComponent,
+    ViewportIntersectorComponent,
+    BadgeComponent,
+    ColorScaleComponent,
+    LoadingMaskComponent,
+    PopupAlertComponent,
+    ProgressBarComponent,
+    SpinningLoaderComponent,
+    StepBarComponent,
     TranslateModule.forChild(),
     CommonModule,
     MatDatepickerModule,
@@ -31,6 +65,10 @@ import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http'
     MatFormFieldModule,
     HttpClientModule,
     HttpClientXsrfModule,
+    WizardComponent,
+    WizardFieldComponent,
+    WizardSummarizeComponent,
+    RecordFormComponent,
   ],
   exports: [WizardComponent, WizardSummarizeComponent, RecordFormComponent],
 })

@@ -1,11 +1,14 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
-import { FormControl } from '@angular/forms'
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { NgClass, NgFor, NgIf } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-form-field-simple',
   templateUrl: './form-field-simple.component.html',
   styleUrls: ['./form-field-simple.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, FormsModule, ReactiveFormsModule, NgClass, NgFor],
 })
 export class FormFieldSimpleComponent {
   @Input() type: 'date' | 'url' | 'text' | 'number' | 'list' | 'toggle'

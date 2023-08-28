@@ -4,17 +4,13 @@ import {
   moduleMetadata,
   StoryObj,
 } from '@storybook/angular'
-import { ThumbnailComponent } from '@geonetwork-ui/ui/elements'
-import { UtilSharedModule } from '@geonetwork-ui/util/shared'
 import { RecordPreviewFeedComponent } from './record-preview-feed.component'
 import { importProvidersFrom } from '@angular/core'
 import { action } from '@storybook/addon-actions'
 import { HttpClientModule } from '@angular/common/http'
 import { TranslateModule } from '@ngx-translate/core'
 import { TRANSLATE_DEFAULT_CONFIG } from '@geonetwork-ui/util/i18n'
-import { UiDatavizModule } from '@geonetwork-ui/ui/dataviz'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MatIconModule } from '@angular/material/icon'
 import { DATASET_RECORDS } from '@geonetwork-ui/common/fixtures'
 
 export default {
@@ -22,12 +18,9 @@ export default {
   component: RecordPreviewFeedComponent,
   decorators: [
     moduleMetadata({
-      declarations: [ThumbnailComponent],
       imports: [
         TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
-        UiDatavizModule,
-        MatIconModule,
-        UtilSharedModule,
+        RecordPreviewFeedComponent,
       ],
     }),
     applicationConfig({

@@ -1,10 +1,23 @@
-import { Meta, StoryObj } from '@storybook/angular'
+import { Meta, moduleMetadata, StoryObj } from '@storybook/angular'
 import { RecordMetricComponent } from './record-metric.component'
+import {
+  TRANSLATE_DEFAULT_CONFIG,
+  UtilI18nModule,
+} from '@geonetwork-ui/util/i18n'
+import { TranslateModule } from '@ngx-translate/core'
 
 export default {
   title: 'Search/RecordMetricComponent',
   component: RecordMetricComponent,
-  decorators: [],
+  decorators: [
+    moduleMetadata({
+      imports: [
+        RecordMetricComponent,
+        UtilI18nModule,
+        TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
+      ],
+    }),
+  ],
 } as Meta<RecordMetricComponent>
 
 export const Primary: StoryObj<RecordMetricComponent> = {

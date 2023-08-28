@@ -11,14 +11,32 @@ import {
   FilterDropdownComponent,
   SearchFacade,
   SearchService,
+  SortByComponent,
 } from '@geonetwork-ui/feature/search'
 import { getOptionalSearchConfig } from '@geonetwork-ui/util/app-config'
+import { ButtonComponent, CheckToggleComponent } from '@geonetwork-ui/ui/inputs'
+import { MatIconModule } from '@angular/material/icon'
+import { TranslateModule } from '@ngx-translate/core'
+import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common'
 
 @Component({
   selector: 'datahub-search-filters',
   templateUrl: './search-filters.component.html',
   styleUrls: ['./search-filters.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    NgClass,
+    TranslateModule,
+    NgIf,
+    MatIconModule,
+    NgFor,
+    FilterDropdownComponent,
+    CheckToggleComponent,
+    ButtonComponent,
+    SortByComponent,
+    AsyncPipe,
+  ],
 })
 export class SearchFiltersComponent implements OnInit {
   @ViewChildren(FilterDropdownComponent)

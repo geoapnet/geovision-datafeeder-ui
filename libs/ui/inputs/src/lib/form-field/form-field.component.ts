@@ -7,12 +7,35 @@ import {
 import { FormFieldConfig } from './form-field.model'
 import { FormControl } from '@angular/forms'
 import { Observable } from 'rxjs'
+import { TranslateModule } from '@ngx-translate/core'
+import { FormFieldTemporalExtentComponent } from './form-field-temporal-extent/form-field-temporal-extent.component'
+import { FormFieldSpatialExtentComponent } from './form-field-spatial-extent/form-field-spatial-extent.component'
+import { FormFieldObjectComponent } from './form-field-object/form-field-object.component'
+import { FormFieldArrayComponent } from './form-field-array/form-field-array.component'
+import { FormFieldRichComponent } from './form-field-rich/form-field-rich.component'
+import { FormFieldFileComponent } from './form-field-file/form-field-file.component'
+import { FormFieldSimpleComponent } from './form-field-simple/form-field-simple.component'
+import { MatIconModule } from '@angular/material/icon'
+import { NgIf } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-form-field',
   templateUrl: './form-field.component.html',
   styleUrls: ['./form-field.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    NgIf,
+    MatIconModule,
+    FormFieldSimpleComponent,
+    FormFieldFileComponent,
+    FormFieldRichComponent,
+    FormFieldArrayComponent,
+    FormFieldObjectComponent,
+    FormFieldSpatialExtentComponent,
+    FormFieldTemporalExtentComponent,
+    TranslateModule,
+  ],
 })
 export class FormFieldComponent {
   @Input() config: FormFieldConfig

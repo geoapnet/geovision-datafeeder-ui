@@ -1,7 +1,12 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { HomePageComponent } from './home-page.component'
-import { UiLayoutModule } from '@geonetwork-ui/ui/layout'
+import {
+  AnchorLinkDirective,
+  ExpandablePanelButtonComponent,
+  ExpandablePanelComponent,
+  StickyHeaderComponent,
+} from '@geonetwork-ui/ui/layout'
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent
@@ -10,7 +15,12 @@ describe('HomePageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomePageComponent],
-      imports: [UiLayoutModule],
+      imports: [
+        AnchorLinkDirective,
+        ExpandablePanelComponent,
+        ExpandablePanelButtonComponent,
+        StickyHeaderComponent,
+      ],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents()
   })

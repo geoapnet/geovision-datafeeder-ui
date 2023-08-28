@@ -17,8 +17,8 @@ export default {
   component: OrganisationsSortComponent,
   decorators: [
     moduleMetadata({
-      declarations: [DropdownSelectorComponent],
       imports: [
+        DropdownSelectorComponent,
         UtilI18nModule,
         TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
       ],

@@ -7,7 +7,6 @@ import {
 } from '@storybook/angular'
 import { FigureComponent } from './figure.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { UiDatavizModule } from '../ui-dataviz.module'
 import { importProvidersFrom } from '@angular/core'
 
 export default {
@@ -15,7 +14,7 @@ export default {
   component: FigureComponent,
   decorators: [
     moduleMetadata({
-      imports: [UiDatavizModule],
+      imports: [],
     }),
     applicationConfig({
       providers: [importProvidersFrom(BrowserAnimationsModule)],

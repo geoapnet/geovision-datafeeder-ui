@@ -3,11 +3,15 @@ import { FacetSelectEvent, ModelBlock } from '../facets.model'
 // Revisit facets: these should not use the ES formats!
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { EsRequestAggTerm } from '@geonetwork-ui/api/metadata-converter'
+import { NgFor } from '@angular/common'
+import { FacetBlockComponent } from '../facet-block/facet-block.component'
 
 @Component({
   selector: 'gn-ui-facet-list',
   templateUrl: './facet-list.component.html',
   styleUrls: ['./facet-list.component.css'],
+  standalone: true,
+  imports: [NgFor, FacetBlockComponent],
 })
 export class FacetListComponent {
   @Input() models: ModelBlock[]

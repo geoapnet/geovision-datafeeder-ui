@@ -1,11 +1,14 @@
 import { Component } from '@angular/core'
 import { WizardService } from '../../services/wizard.service'
-import { TranslateService } from '@ngx-translate/core'
+import { TranslateService, TranslateModule } from '@ngx-translate/core'
+import { UpperCasePipe } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-wizard-summarize',
   templateUrl: './wizard-summarize.component.html',
   styleUrls: ['./wizard-summarize.component.css'],
+  standalone: true,
+  imports: [TranslateModule, UpperCasePipe],
 })
 export class WizardSummarizeComponent {
   get title() {

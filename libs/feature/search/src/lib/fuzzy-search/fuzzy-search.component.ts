@@ -16,12 +16,16 @@ import { SearchFacade } from '../state/search.facade'
 import { SearchService } from '../utils/service/search.service'
 import { CatalogRecord } from '@geonetwork-ui/common/domain/record'
 import { RecordsRepositoryInterface } from '@geonetwork-ui/common/domain/records-repository.interface'
+import { AsyncPipe } from '@angular/common'
+import { TranslateModule } from '@ngx-translate/core'
 
 @Component({
   selector: 'gn-ui-fuzzy-search',
   templateUrl: './fuzzy-search.component.html',
   styleUrls: ['./fuzzy-search.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [AutocompleteComponent, AsyncPipe, TranslateModule],
 })
 export class FuzzySearchComponent implements OnInit {
   @ViewChild(AutocompleteComponent) autocomplete: AutocompleteComponent

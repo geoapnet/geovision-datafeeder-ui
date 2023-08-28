@@ -12,11 +12,12 @@ import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { navigation } from '@ngrx/router-store/data-persistence'
 import { of } from 'rxjs'
 import { map, mergeMap, tap } from 'rxjs/operators'
-import { ROUTER_CONFIG, RouterConfigModel } from '../router.module'
 import * as RouterActions from './router.actions'
 import { RouterFacade } from './router.facade'
 import { ROUTE_PARAMS } from '../constants'
 import { sortByFromString } from '@geonetwork-ui/util/shared'
+import { ROUTER_CONFIG } from '../ROUTER_CONFIG'
+import { RouterConfigModel } from '../index'
 
 @Injectable()
 export class RouterEffects {

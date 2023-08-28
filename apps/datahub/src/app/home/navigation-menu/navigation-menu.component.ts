@@ -9,6 +9,10 @@ import {
   ROUTER_ROUTE_NEWS,
   ROUTER_ROUTE_ORGANISATIONS,
 } from '../../router/constants'
+import { MatIconModule } from '@angular/material/icon'
+import { RouterLink } from '@angular/router'
+import { TranslateModule } from '@ngx-translate/core'
+import { NgFor, NgClass, AsyncPipe } from '@angular/common'
 
 marker('datahub.header.news')
 marker('datahub.header.datasets')
@@ -18,6 +22,15 @@ marker('datahub.header.organisations')
   selector: 'datahub-navigation-menu',
   templateUrl: './navigation-menu.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    NgFor,
+    TranslateModule,
+    RouterLink,
+    NgClass,
+    MatIconModule,
+    AsyncPipe,
+  ],
 })
 export class NavigationMenuComponent {
   displayMobileMenu = false

@@ -1,18 +1,52 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { SourcesService } from '@geonetwork-ui/feature/catalog'
 import { SearchService } from '@geonetwork-ui/feature/search'
-import { ErrorType } from '@geonetwork-ui/ui/elements'
+import {
+  ErrorType,
+  MetadataCatalogComponent,
+  MetadataContactComponent,
+  MetadataInfoComponent,
+  SearchResultsErrorComponent,
+} from '@geonetwork-ui/ui/elements'
 import { BehaviorSubject, combineLatest } from 'rxjs'
-import { filter, map, mergeMap, pluck } from 'rxjs/operators'
+import { filter, map, mergeMap } from 'rxjs/operators'
 import { MdViewFacade } from '../state/mdview.facade'
 import { OrganizationsServiceInterface } from '@geonetwork-ui/common/domain/organizations.service.interface'
 import { Individual, Organization } from '@geonetwork-ui/common/domain/record'
+import { DataOtherlinksComponent } from '../data-otherlinks/data-otherlinks.component'
+import { AsyncPipe, NgIf } from '@angular/common'
+import { TranslateModule } from '@ngx-translate/core'
+import { MatTabsModule } from '@angular/material/tabs'
+import { MapViewComponent } from '../map-view/map-view.component'
+import { DataViewComponent } from '../data-view/data-view.component'
+import { DataViewShareComponent } from '../data-view-share/data-view-share.component'
+import { DataDownloadsComponent } from '../data-downloads/data-downloads.component'
+import { DataApisComponent } from '../data-apis/data-apis.component'
+import { RelatedRecordsComponent } from '../related-records/related-records.component'
 
 @Component({
   selector: 'gn-ui-record-metadata',
   templateUrl: './record-metadata.component.html',
   styleUrls: ['./record-metadata.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    NgIf,
+    MetadataInfoComponent,
+    MetadataContactComponent,
+    MetadataCatalogComponent,
+    TranslateModule,
+    MatTabsModule,
+    MapViewComponent,
+    DataViewComponent,
+    DataViewShareComponent,
+    DataDownloadsComponent,
+    DataOtherlinksComponent,
+    DataApisComponent,
+    RelatedRecordsComponent,
+    SearchResultsErrorComponent,
+    AsyncPipe,
+  ],
 })
 export class RecordMetadataComponent {
   displayMap$ = combineLatest([

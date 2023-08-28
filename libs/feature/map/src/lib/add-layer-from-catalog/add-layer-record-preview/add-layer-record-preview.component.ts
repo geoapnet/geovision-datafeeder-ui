@@ -17,12 +17,17 @@ import {
   DatasetDistribution,
   DatasetRecord,
 } from '@geonetwork-ui/common/domain/record'
+import { ThumbnailComponent } from '@geonetwork-ui/ui/elements'
+import { NgFor } from '@angular/common'
+import { ButtonComponent } from '@geonetwork-ui/ui/inputs'
 
 @Component({
   selector: 'gn-ui-add-layer-record-preview',
   templateUrl: './add-layer-record-preview.component.html',
   styleUrls: ['./add-layer-record-preview.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [ThumbnailComponent, NgFor, ButtonComponent],
 })
 export class AddLayerRecordPreviewComponent extends RecordPreviewComponent {
   get mapLinks(): DatasetDistribution[] {

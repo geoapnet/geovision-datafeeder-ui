@@ -6,7 +6,7 @@ import {
   tick,
 } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { UtilSharedModule } from '@geonetwork-ui/util/shared'
+import { ImageFallbackDirective, SafePipe } from '@geonetwork-ui/util/shared'
 import { ThumbnailComponent } from './thumbnail.component'
 
 describe('ThumbnailComponent', () => {
@@ -16,7 +16,7 @@ describe('ThumbnailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UtilSharedModule],
+      imports: [SafePipe, ImageFallbackDirective],
       declarations: [ThumbnailComponent],
     })
       .overrideComponent(ThumbnailComponent, {

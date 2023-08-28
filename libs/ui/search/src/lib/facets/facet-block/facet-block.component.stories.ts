@@ -3,7 +3,6 @@ import { FacetBlockComponent } from './facet-block.component'
 import { BLOCK_MODEL_FIXTURE } from '../fixtures'
 import { TranslateModule } from '@ngx-translate/core'
 import { FacetItemComponent } from '../facet-item/facet-item.component'
-import { FormsModule } from '@angular/forms'
 import {
   TRANSLATE_DEFAULT_CONFIG,
   UtilI18nModule,
@@ -14,11 +13,10 @@ export default {
   component: FacetBlockComponent,
   decorators: [
     moduleMetadata({
-      declarations: [FacetItemComponent],
       imports: [
+        FacetItemComponent,
         UtilI18nModule,
         TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
-        FormsModule,
       ],
     }),
   ],

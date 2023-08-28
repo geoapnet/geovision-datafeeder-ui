@@ -8,6 +8,9 @@ import {
 import { Configuration } from '@geonetwork-ui/data-access/gn4'
 import { combineLatest, map } from 'rxjs'
 import { MdViewFacade } from '../state'
+import { TranslateModule } from '@ngx-translate/core'
+import { CopyTextButtonComponent } from '@geonetwork-ui/ui/inputs'
+import { AsyncPipe, NgIf } from '@angular/common'
 
 export const WEB_COMPONENT_EMBEDDER_URL = new InjectionToken<string>(
   'webComponentEmbedderUrl'
@@ -18,6 +21,8 @@ export const WEB_COMPONENT_EMBEDDER_URL = new InjectionToken<string>(
   templateUrl: './data-view-permalink.component.html',
   styleUrls: ['./data-view-permalink.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, CopyTextButtonComponent, AsyncPipe, TranslateModule],
 })
 export class DataViewPermalinkComponent {
   permalinkUrl$ = combineLatest([

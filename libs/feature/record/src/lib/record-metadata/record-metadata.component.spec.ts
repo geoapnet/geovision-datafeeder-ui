@@ -5,12 +5,21 @@ import { SourcesService } from '@geonetwork-ui/feature/catalog'
 import { MapManagerService } from '@geonetwork-ui/feature/map'
 import { SearchService } from '@geonetwork-ui/feature/search'
 import {
+  ApiCardComponent,
+  AvatarComponent,
+  ContentGhostComponent,
+  DownloadItemComponent,
+  DownloadsListComponent,
   ErrorType,
+  LinkCardComponent,
   MetadataCatalogComponent,
   MetadataContactComponent,
   MetadataInfoComponent,
+  PaginationComponent,
+  RelatedRecordCardComponent,
   SearchResultsErrorComponent,
-  UiElementsModule,
+  ThumbnailComponent,
+  UserPreviewComponent,
 } from '@geonetwork-ui/ui/elements'
 import { TranslateModule } from '@ngx-translate/core'
 import { BehaviorSubject, of } from 'rxjs'
@@ -118,7 +127,23 @@ describe('RecordMetadataComponent', () => {
         SearchResultsErrorComponent,
       ],
       schemas: [NO_ERRORS_SCHEMA],
-      imports: [UiElementsModule, TranslateModule.forRoot()],
+      imports: [
+        ApiCardComponent,
+        AvatarComponent,
+        ContentGhostComponent,
+        DownloadItemComponent,
+        DownloadsListComponent,
+        LinkCardComponent,
+        MetadataCatalogComponent,
+        MetadataContactComponent,
+        MetadataInfoComponent,
+        PaginationComponent,
+        RelatedRecordCardComponent,
+        SearchResultsErrorComponent,
+        ThumbnailComponent,
+        UserPreviewComponent,
+        TranslateModule.forRoot(),
+      ],
       providers: [
         {
           provide: MdViewFacade,

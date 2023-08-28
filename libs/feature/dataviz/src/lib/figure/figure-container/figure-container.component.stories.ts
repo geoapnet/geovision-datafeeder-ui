@@ -10,7 +10,6 @@ import { FigureContainerComponent } from './figure-container.component'
 import {
   TABLE_ITEM_FIXTURE,
   TABLE_ITEM_FIXTURE_HAB,
-  UiDatavizModule,
 } from '@geonetwork-ui/ui/dataviz'
 import { importProvidersFrom } from '@angular/core'
 
@@ -19,7 +18,7 @@ export default {
   component: FigureContainerComponent,
   decorators: [
     moduleMetadata({
-      imports: [UiDatavizModule],
+      imports: [],
     }),
     applicationConfig({
       providers: [importProvidersFrom(BrowserAnimationsModule)],

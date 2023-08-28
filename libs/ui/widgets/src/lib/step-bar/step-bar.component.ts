@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core'
+import { NgFor, NgIf } from '@angular/common'
 
 interface ColorScheme {
   outerBar: string
@@ -9,6 +10,8 @@ interface ColorScheme {
   selector: 'gn-ui-step-bar',
   templateUrl: './step-bar.component.html',
   styleUrls: ['./step-bar.component.css'],
+  standalone: true,
+  imports: [NgFor, NgIf],
 })
 export class StepBarComponent {
   @Input() steps

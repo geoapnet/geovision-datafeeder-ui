@@ -8,15 +8,20 @@ import {
   Output,
   ViewChild,
 } from '@angular/core'
-import { TranslateService } from '@ngx-translate/core'
+import { TranslateService, TranslateModule } from '@ngx-translate/core'
 import { take } from 'rxjs/operators'
 import { WizardFieldModel } from '../../models/wizard-field.model'
 import { WizardService } from '../../services/wizard.service'
+import { ButtonComponent } from '@geonetwork-ui/ui/inputs'
+import { WizardFieldComponent } from '../wizard-field/wizard-field.component'
+import { NgFor } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-wizard',
   templateUrl: './wizard.component.html',
   styleUrls: ['./wizard.component.css'],
+  standalone: true,
+  imports: [NgFor, WizardFieldComponent, ButtonComponent, TranslateModule],
 })
 export class WizardComponent implements OnInit, AfterViewInit {
   @Input() id: string

@@ -23,6 +23,13 @@ import { ROUTER_ROUTE_NEWS } from '../../router/constants'
 import { lastValueFrom } from 'rxjs'
 import { CatalogRecord } from '@geonetwork-ui/common/domain/record'
 import { sortByFromString } from '@geonetwork-ui/util/shared'
+import { LanguageSwitcherComponent } from '@geonetwork-ui/ui/catalog'
+import { NavigationMenuComponent } from '../navigation-menu/navigation-menu.component'
+import { TranslateModule } from '@ngx-translate/core'
+import { RouterLink } from '@angular/router'
+import { HeaderBadgeButtonComponent } from '../header-badge-button/header-badge-button.component'
+import { NgIf, NgFor, AsyncPipe } from '@angular/common'
+import { FuzzySearchComponent } from '@geonetwork-ui/feature/search'
 
 marker('datahub.header.myfavorites')
 marker('datahub.header.lastRecords')
@@ -33,6 +40,18 @@ marker('datahub.header.popularRecords')
   templateUrl: './home-header.component.html',
   styleUrls: ['./home-header.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    FuzzySearchComponent,
+    NgIf,
+    HeaderBadgeButtonComponent,
+    RouterLink,
+    TranslateModule,
+    NgFor,
+    NavigationMenuComponent,
+    LanguageSwitcherComponent,
+    AsyncPipe,
+  ],
 })
 export class HomeHeaderComponent {
   @Input() expandRatio: number

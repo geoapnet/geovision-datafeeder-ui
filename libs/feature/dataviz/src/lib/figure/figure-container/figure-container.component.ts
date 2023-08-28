@@ -6,12 +6,15 @@ import {
 } from '@angular/core'
 import { TableItemModel } from '@geonetwork-ui/ui/dataviz'
 import { FigureService } from '../figure.service'
+import { FigureComponent } from '@geonetwork-ui/ui/dataviz'
 
 @Component({
   selector: 'gn-ui-figure-container',
   templateUrl: './figure-container.component.html',
   styleUrls: ['./figure-container.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [FigureComponent],
 })
 export class FigureContainerComponent implements OnChanges {
   @Input() dataset: TableItemModel[]

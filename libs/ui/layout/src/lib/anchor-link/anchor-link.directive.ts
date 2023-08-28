@@ -10,6 +10,7 @@ import {
 
 @Directive({
   selector: '[gnUiAnchorLink]',
+  standalone: true,
 })
 export class AnchorLinkDirective implements OnInit, OnDestroy {
   @Input('gnUiAnchorLink') targetId: string

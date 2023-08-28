@@ -20,6 +20,7 @@ import {
 @Component({
   selector: 'gn-ui-record-preview',
   template: '',
+  standalone: true,
 })
 export class RecordPreviewComponent implements OnInit, OnDestroy {
   @Input() record: CatalogRecord

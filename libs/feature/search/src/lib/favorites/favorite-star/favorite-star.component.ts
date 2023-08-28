@@ -16,12 +16,15 @@ import { TranslateService } from '@ngx-translate/core'
 import { StarToggleComponent } from '@geonetwork-ui/ui/inputs'
 import { Subscription } from 'rxjs'
 import { CatalogRecord } from '@geonetwork-ui/common/domain/record'
+import { AsyncPipe, NgIf } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-favorite-star',
   templateUrl: './favorite-star.component.html',
   styleUrls: ['./favorite-star.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, StarToggleComponent, AsyncPipe],
 })
 export class FavoriteStarComponent implements AfterViewInit, OnDestroy {
   @Input() set record(value) {

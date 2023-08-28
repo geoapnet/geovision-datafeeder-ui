@@ -18,12 +18,28 @@ import {
 import { take } from 'rxjs/operators'
 import { Choice } from './dropdown-multiselect.model'
 import { propagateToDocumentOnly } from '@geonetwork-ui/util/shared'
+import { TranslateModule } from '@ngx-translate/core'
+import { FormsModule } from '@angular/forms'
+import { MatIconModule } from '@angular/material/icon'
+import { NgFor, NgIf } from '@angular/common'
+import { ButtonComponent } from '../button/button.component'
 
 @Component({
   selector: 'gn-ui-dropdown-multiselect',
   templateUrl: './dropdown-multiselect.component.html',
   styleUrls: ['./dropdown-multiselect.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    ButtonComponent,
+    CdkOverlayOrigin,
+    NgIf,
+    MatIconModule,
+    CdkConnectedOverlay,
+    NgFor,
+    FormsModule,
+    TranslateModule,
+  ],
 })
 export class DropdownMultiselectComponent {
   @Input() title: string

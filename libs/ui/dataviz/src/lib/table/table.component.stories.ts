@@ -9,7 +9,6 @@ import {
 import { TRANSLATE_DEFAULT_CONFIG } from '@geonetwork-ui/util/i18n'
 import { TableComponent } from './table.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { UiDatavizModule } from '../ui-dataviz.module'
 import { importProvidersFrom } from '@angular/core'
 
 export default {
@@ -18,7 +17,6 @@ export default {
   decorators: [
     applicationConfig({
       providers: [
-        importProvidersFrom(UiDatavizModule),
         importProvidersFrom(BrowserAnimationsModule),
         importProvidersFrom(HttpClientModule),
         importProvidersFrom(TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG)),

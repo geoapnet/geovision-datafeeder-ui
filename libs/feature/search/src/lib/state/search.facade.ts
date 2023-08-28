@@ -41,7 +41,7 @@ import {
   isEndOfResults,
   totalPages,
 } from './selectors'
-import { FILTER_GEOMETRY } from '../feature-search.module'
+
 import { Geometry } from 'geojson'
 import { catchError, map, shareReplay } from 'rxjs/operators'
 import {
@@ -52,6 +52,7 @@ import {
   SortByField,
 } from '@geonetwork-ui/common/domain/search'
 import { CatalogRecord } from '@geonetwork-ui/common/domain/record'
+import { FILTER_GEOMETRY } from '../../index'
 
 @Injectable()
 export class SearchFacade {

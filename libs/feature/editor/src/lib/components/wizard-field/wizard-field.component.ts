@@ -14,7 +14,10 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from '@angular/material/core'
-import { MatDatepickerInputEvent } from '@angular/material/datepicker'
+import {
+  MatDatepickerInputEvent,
+  MatDatepickerModule,
+} from '@angular/material/datepicker'
 import { marker } from '@biesbjerg/ngx-translate-extract-marker'
 import { getLangFromBrowser } from '@geonetwork-ui/util/i18n'
 import { WizardFieldModel } from '../../models/wizard-field.model'
@@ -27,6 +30,8 @@ import {
   TextInputComponent,
 } from '@geonetwork-ui/ui/inputs'
 import { Subscription } from 'rxjs'
+import { NgIf } from '@angular/common'
+import { TranslateModule } from '@ngx-translate/core'
 
 marker('datafeeder.month.january')
 marker('datafeeder.month.february')
@@ -65,6 +70,16 @@ export const MY_FORMATS = {
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
     },
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
+  standalone: true,
+  imports: [
+    TranslateModule,
+    NgIf,
+    TextInputComponent,
+    ChipsInputComponent,
+    TextAreaComponent,
+    MatDatepickerModule,
+    DropdownSelectorComponent,
   ],
 })
 export class WizardFieldComponent implements AfterViewInit, OnDestroy {

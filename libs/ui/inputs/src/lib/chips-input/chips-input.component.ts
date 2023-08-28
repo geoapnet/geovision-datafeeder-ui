@@ -4,6 +4,9 @@ import { LANG_2_TO_3_MAPPER } from '@geonetwork-ui/util/i18n'
 import { TranslateService } from '@ngx-translate/core'
 import { Observable, of, Subject, Subscription } from 'rxjs'
 import { distinctUntilChanged, map, shareReplay, tap } from 'rxjs/operators'
+import { NgClass } from '@angular/common'
+import { FormsModule } from '@angular/forms'
+import { TagInputModule } from 'ngx-chips'
 
 export interface Items {
   display: string
@@ -14,6 +17,8 @@ export interface Items {
   selector: 'gn-ui-chips-input',
   templateUrl: './chips-input.component.html',
   styleUrls: ['./chips-input.component.css'],
+  standalone: true,
+  imports: [TagInputModule, FormsModule, NgClass],
 })
 export class ChipsInputComponent implements OnInit, OnDestroy {
   @Input() url: (text) => string

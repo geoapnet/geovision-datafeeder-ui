@@ -8,11 +8,15 @@ import {
   TermBucket,
 } from '@geonetwork-ui/common/domain/search'
 import { RecordMetric } from '@geonetwork-ui/api/metadata-converter'
+import { TranslateModule } from '@ngx-translate/core'
+import { AsyncPipe, NgFor } from '@angular/common'
 
 @Component({
   selector: 'gn-ui-records-metrics',
   templateUrl: './records-metrics.component.html',
   styleUrls: ['./records-metrics.component.css'],
+  standalone: true,
+  imports: [NgFor, AsyncPipe, TranslateModule],
 })
 export class RecordsMetricsComponent implements OnInit {
   @Input() field: string

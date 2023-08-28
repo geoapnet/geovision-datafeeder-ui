@@ -2,16 +2,19 @@ import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { FeatureCatalogModule } from '@geonetwork-ui/feature/catalog'
-import { FeatureDatavizModule } from '@geonetwork-ui/feature/dataviz'
 import { FeatureMapModule } from '@geonetwork-ui/feature/map'
-import { UiLayoutModule } from '@geonetwork-ui/ui/layout'
-import { UiMapModule } from '@geonetwork-ui/ui/map'
 import {
-  UtilI18nModule,
+  AnchorLinkDirective,
+  ExpandablePanelButtonComponent,
+  ExpandablePanelComponent,
+  StickyHeaderComponent,
+} from '@geonetwork-ui/ui/layout'
+import { FeatureDetailComponent, MapComponent } from '@geonetwork-ui/ui/map'
+import {
   TRANSLATE_DEFAULT_CONFIG,
+  UtilI18nModule,
 } from '@geonetwork-ui/util/i18n'
 import { Configuration } from '@geonetwork-ui/data-access/gn4'
-import { FeatureSearchModule } from '@geonetwork-ui/feature/search'
 import { EffectsModule } from '@ngrx/effects'
 import { MetaReducer, StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
@@ -35,12 +38,14 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     HttpClientModule,
     UtilI18nModule,
     TranslateModule.forRoot(TRANSLATE_DEFAULT_CONFIG),
-    FeatureSearchModule,
     FeatureCatalogModule,
-    UiLayoutModule,
+    AnchorLinkDirective,
+    ExpandablePanelComponent,
+    ExpandablePanelButtonComponent,
+    StickyHeaderComponent,
     FeatureMapModule,
-    UiMapModule,
-    FeatureDatavizModule,
+    FeatureDetailComponent,
+    MapComponent,
     StoreModule.forRoot({}, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot(),
