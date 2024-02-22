@@ -1,6 +1,8 @@
 import { marker } from '@biesbjerg/ngx-translate-extract-marker'
-import { WizardFieldType } from '@geonetwork-ui/feature/editor'
-import { WizardFieldModel } from '@geonetwork-ui/feature/editor'
+import {
+  WizardFieldModel,
+  WizardFieldType,
+} from '@geonetwork-ui/feature/editor'
 import SETTINGS from '../../settings'
 
 export const DEFAULT_CHIPS_ITEMS_URL = (q: string): string =>
@@ -20,14 +22,14 @@ export const DEFAULT_WIZARD_CONFIGURATION: WizardFieldModel[][] = [
     {
       id: 'title',
       label: 'datafeeder.form.title',
-      icon: 'icon-title',
+      icon: 'title',
       type: WizardFieldType.TEXT,
       required: true,
     },
     {
       id: 'abstract',
       label: 'datafeeder.form.abstract',
-      icon: 'icon-description',
+      icon: 'subtitles',
       type: WizardFieldType.TEXT_AREA,
       required: true,
     },
@@ -36,7 +38,7 @@ export const DEFAULT_WIZARD_CONFIGURATION: WizardFieldModel[][] = [
     {
       id: 'tags',
       label: 'datafeeder.form.tags',
-      icon: 'icon-tag',
+      icon: 'bookmark',
       type: WizardFieldType.CHIPS,
       options: {
         url: DEFAULT_CHIPS_ITEMS_URL,
@@ -49,13 +51,13 @@ export const DEFAULT_WIZARD_CONFIGURATION: WizardFieldModel[][] = [
     {
       id: 'datepicker',
       label: 'datafeeder.form.datepicker',
-      icon: 'icon-date',
+      icon: 'event_available',
       type: WizardFieldType.DATA_PICKER,
     },
     {
       id: 'dropdown',
       label: 'datafeeder.form.dropdown',
-      icon: 'icon-scale',
+      icon: 'open_in_full',
       type: WizardFieldType.DROPDOWN,
       options: SETTINGS.scales,
     },
@@ -64,8 +66,16 @@ export const DEFAULT_WIZARD_CONFIGURATION: WizardFieldModel[][] = [
     {
       id: 'description',
       label: 'datafeeder.form.description',
-      icon: 'icon-process',
+      icon: 'rebase_edit',
       type: WizardFieldType.TEXT_AREA,
+      required: true,
+    },
+    {
+      id: 'license',
+      label: 'datafeeder.form.description',
+      icon: 'public',
+      type: WizardFieldType.DROPDOWN,
+      options: SETTINGS.licenses,
       required: true,
     },
   ],

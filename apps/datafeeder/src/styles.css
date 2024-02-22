@@ -8,14 +8,6 @@ body {
   color: var(--color-main);
 }
 
-@font-face {
-  font-family: 'dataFeeder';
-  src: url('./assets/fonts/dataFeeder.woff') format('woff'),
-    url('./assets/fonts/dataFeeder.svg') format('svg'),
-    url('./assets/fonts/dataFeeder.ttf') format('ttf');
-  /* src: url('./assets/fonts/dataFeeder.eot'); FIXME file looks corrupted */
-}
-
 html,
 .force-font {
   font-family: 'Open Sans', 'dataFeeder', sans-serif !important;
@@ -140,38 +132,4 @@ ng2-dropdown-menu .ng2-dropdown-menu {
 
 .current-color {
   fill: var(--color-main);
-}
-
-.icon-title:before {
-  content: '\e90a';
-  font-size: 35px;
-}
-
-.icon-description:before {
-  content: '\e90b';
-  font-size: 35px;
-}
-
-.icon-tag:before {
-  content: '\e90c';
-  font-size: 35px;
-}
-
-.icon-date:before {
-  content: '\e90d';
-  font-size: 35px;
-}
-
-.icon-scale:before {
-  content: '\e90e';
-  font-size: 35px;
-}
-
-.icon-process:before {
-  content: '\e90f';
-  font-size: 35px;
-}
-
-.icon-check:before {
-  content: '\e905';
 }

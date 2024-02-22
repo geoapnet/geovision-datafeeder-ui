@@ -10,6 +10,7 @@ import { TranslateModule } from '@ngx-translate/core'
 import { WizardSummarizeComponent } from './components/wizard-summarize/wizard-summarize.component'
 import { CommonModule } from '@angular/common'
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http'
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http'
     MatFormFieldModule,
     HttpClientModule,
     HttpClientXsrfModule,
+    MatIconModule,
   ],
   exports: [WizardComponent, WizardSummarizeComponent],
 })

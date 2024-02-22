@@ -34,6 +34,16 @@ class Settings {
     { value: '50000', label: '1:50000' },
     { value: '100000', label: '1:100000' },
   ]
+  licenses = [
+    {
+      label: 'ODC Open Database License (ODbL) version 1.0',
+      value: 'ODC Open Database License (ODbL) version 1.0',
+    },
+    {
+      label: 'Open Licence version 2.0',
+      value: 'Open Licence version 2.0',
+    },
+  ]
   thesaurusUrl = `/geonetwork/srv/api/registries/vocabularies/search?type=CONTAINS&thesaurus=external.theme.inspire-theme&rows=200&q=$\{q}&uri=**&lang=$\{lang}`
   maxFileUploadSize = '-1'
   init() {

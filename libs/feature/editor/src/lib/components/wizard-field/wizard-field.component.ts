@@ -106,7 +106,7 @@ export class WizardFieldComponent implements AfterViewInit, OnDestroy {
         return data ? new Date(Number(data)) : new Date()
       }
       case WizardFieldType.DROPDOWN: {
-        return data ? JSON.parse(data) : this.dropdownChoices[0]?.value
+        return data ? data : this.dropdownChoices[0]?.value
       }
     }
   }
