@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { ImportRecordComponent } from './import-record.component'
 import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core'
 import { Router } from '@angular/router'
-import { TranslateModule, TranslateService } from '@ngx-translate/core'
+import { TranslateService } from '@ngx-translate/core'
 import { NotificationsService } from '@geonetwork-ui/feature/notifications'
 import { RecordsRepositoryInterface } from '@geonetwork-ui/common/domain/repository/records-repository.interface'
 import { of, throwError } from 'rxjs'
-import { MockBuilder, MockComponent, MockModule, MockProviders } from 'ng-mocks'
+import { MockBuilder, MockProviders } from 'ng-mocks'
 
 describe('ImportRecordComponent', () => {
   let component: ImportRecordComponent
@@ -22,10 +22,6 @@ describe('ImportRecordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        MockComponent(ImportRecordComponent),
-        MockModule(TranslateModule.forRoot()),
-      ],
       providers: [
         MockProviders(
           Router,
