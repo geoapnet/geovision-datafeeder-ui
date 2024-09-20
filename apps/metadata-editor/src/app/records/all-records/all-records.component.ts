@@ -86,30 +86,7 @@ export class AllRecordsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.searchFacade.resetSearch()
-
-    const searchTerms = this.activedRoute.snapshot.queryParams['q'] ?? ''
-
-    if (searchTerms) {
-      this.searchFacade.setFilters({ any: searchTerms })
-    }
-
-    let sort = (this.activedRoute.snapshot.queryParams['_sort'] as string) ?? ''
-
-    if (sort) {
-      let ascDesc = ''
-
-      if (sort?.charAt(0) === '-') {
-        ascDesc = 'desc'
-        sort = sort.slice(1, sort.length)
-      } else {
-        ascDesc = 'asc'
-      }
-      this.searchFacade.setSortBy([ascDesc as 'asc' | 'desc', sort])
-    }
-
-    this.searchFacade.setPageSize(15)
-    this.searchFacade.setConfigRequestFields(allSearchFields)
+    this.searchFacade.setConfigRequestFields(allSearchFields).setPageSize(15)
   }
 
   createRecord() {
