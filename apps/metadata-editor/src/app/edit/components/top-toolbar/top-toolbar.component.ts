@@ -62,7 +62,6 @@ import {
 })
 export class TopToolbarComponent {
   protected SaveStatus = [
-    'draft_only', // => when creating a record
     'record_up_to_date', // => when the record was just published (ie saved on the server)
     'draft_changes_pending', // => when the record was modified and not yet published
     // these are not used since the draft is saved locally in a synchronous way
@@ -72,14 +71,8 @@ export class TopToolbarComponent {
   ] as const
 
   protected saveStatus$: Observable<(typeof this.SaveStatus)[number]> =
-    combineLatest([
-      this.editorFacade.alreadySavedOnce$,
-      this.editorFacade.changedSinceSave$,
-    ]).pipe(
-      map(([alreadySavedOnce, changedSinceSave]) => {
-        if (!alreadySavedOnce) {
-          return 'draft_only'
-        }
+    combineLatest([this.editorFacade.changedSinceSave$]).pipe(
+      map(([changedSinceSave]) => {
         return changedSinceSave ? 'draft_changes_pending' : 'record_up_to_date'
       })
     )
