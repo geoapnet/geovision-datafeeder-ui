@@ -42,6 +42,7 @@ export abstract class RecordsRepositoryInterface {
     uniqueIdentifier: string
   ): Observable<[CatalogRecord, string, true] | null>
 
+  abstract duplicateRecord(uniqueIdentifier: string): Observable<string>
   /**
    * @param record
    * @param referenceRecordSource

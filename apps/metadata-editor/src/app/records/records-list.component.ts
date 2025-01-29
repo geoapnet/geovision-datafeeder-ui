@@ -12,6 +12,8 @@ import { UiElementsModule } from '@geonetwork-ui/ui/elements'
 import { TranslateModule } from '@ngx-translate/core'
 import { UiInputsModule } from '@geonetwork-ui/ui/inputs'
 import { Paginable, PaginationButtonsComponent } from '@geonetwork-ui/ui/layout'
+import { Gn4Repository } from '@geonetwork-ui/api/repository'
+import { RecordsRepositoryInterface } from '@geonetwork-ui/common/domain/repository/records-repository.interface'
 
 export const allSearchFields = [
   'uuid',
@@ -43,7 +45,8 @@ export class RecordsListComponent implements OnInit, Paginable {
   constructor(
     private router: Router,
     public searchFacade: SearchFacade,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private recordsRepository: RecordsRepositoryInterface
   ) {}
 
   ngOnInit(): void {
@@ -64,6 +67,11 @@ export class RecordsListComponent implements OnInit, Paginable {
 
   duplicateRecord(record: CatalogRecord) {
     this.router.navigate(['/duplicate', record.uniqueIdentifier])
+    // this.recordsRepository
+    //   .duplicateRecord(record.uniqueIdentifier)
+    //   .subscribe((res) => {
+    //     this.router.navigate(['/edit', res])
+    //   })
   }
 
   // these are 0 based

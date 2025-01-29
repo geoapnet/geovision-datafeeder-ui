@@ -262,6 +262,28 @@ export class Gn4Repository implements RecordsRepositoryInterface {
       )
   }
 
+  duplicateRecord(uniqueIdentifier: string): Observable<string | null> {
+    return this.gn4RecordsApi
+      .create(
+        uniqueIdentifier,
+        '2',
+        'METADATA',
+        '',
+        false,
+        undefined,
+        true,
+        false,
+        undefined,
+        'body',
+        false,
+        {
+          httpHeaderAccept: 'application/json',
+          httpContentTypeSelected: 'application/json;charset=UTF-8',
+        }
+      )
+      .pipe(map((uuid) => uuid))
+  }
+
   saveRecord(
     record: CatalogRecord,
     referenceRecordSource?: string,
