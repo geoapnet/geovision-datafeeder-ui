@@ -35,13 +35,14 @@ export class EditorEffects {
         this.editorService
           .saveRecord(record, recordSource, fieldsConfig, !alreadySavedOnce)
           .pipe(
-            switchMap(([record, recordSource]) =>
+            switchMap(([record, recordSource, publishedToAll]) =>
               of(
                 EditorActions.saveRecordSuccess(),
                 EditorActions.openRecord({
                   record,
                   alreadySavedOnce: true,
                   recordSource,
+                  publishedToAll,
                 })
               )
             ),

@@ -18,7 +18,7 @@ export class EditorService {
     recordSource: string,
     fieldsConfig: EditorConfig,
     generateNewUniqueIdentifier = false
-  ): Observable<[CatalogRecord, string]> {
+  ): Observable<[CatalogRecord, string, boolean]> {
     const savedRecord = { ...record }
 
     const fields = fieldsConfig.pages.flatMap((page) =>
@@ -57,7 +57,7 @@ export class EditorService {
           // if saving was successful, the original draft can be discarded
           this.recordsRepository.clearRecordDraft(record.uniqueIdentifier)
         }),
-        map(([record, recordSource]) => [record, recordSource])
+        map(([record, recordSource]) => [record, recordSource, publishToAll])
       )
   }
 

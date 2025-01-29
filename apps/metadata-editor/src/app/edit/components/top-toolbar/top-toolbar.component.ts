@@ -71,8 +71,12 @@ export class TopToolbarComponent {
   ] as const
 
   protected saveStatus$: Observable<(typeof this.SaveStatus)[number]> =
-    combineLatest([this.editorFacade.changedSinceSave$]).pipe(
-      map(([changedSinceSave]) => {
+    combineLatest([
+      this.editorFacade.changedSinceSave$,
+      this.editorFacade.isPublishedToAll$,
+    ]).pipe(
+      map(([changedSinceSave, isPublishedToAll]) => {
+        console.log(isPublishedToAll)
         return changedSinceSave ? 'draft_changes_pending' : 'record_up_to_date'
       })
     )

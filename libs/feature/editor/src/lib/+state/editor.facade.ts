@@ -35,6 +35,9 @@ export class EditorFacade {
   hasRecordChanged$ = this.store.pipe(
     select(EditorSelectors.selectHasRecordChanged)
   )
+  isPublishedToAll$ = this.store.pipe(
+    select(EditorSelectors.selectPublishedToAll)
+  )
 
   openRecord(
     record: CatalogRecord,

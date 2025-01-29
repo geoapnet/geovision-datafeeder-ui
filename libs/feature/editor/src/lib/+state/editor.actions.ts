@@ -9,6 +9,7 @@ export const openRecord = createAction(
     record: CatalogRecord
     alreadySavedOnce: boolean
     recordSource?: string | null
+    publishedToAll?: boolean
   }>()
 )
 
