@@ -38,8 +38,7 @@ export class ResultsTableContainerComponent implements OnDestroy {
   hasDraft = (record: CatalogRecord): boolean =>
     this.recordsRepository.recordHasDraft(record.uniqueIdentifier)
 
-  isUnsavedDraft = (record: CatalogRecord): boolean =>
-    this.recordsRepository.isRecordNotYetSaved(record.uniqueIdentifier)
+  isUnsavedDraft = (record: CatalogRecord): boolean => !record.uniqueIdentifier
 
   constructor(
     protected searchFacade: SearchFacade,
