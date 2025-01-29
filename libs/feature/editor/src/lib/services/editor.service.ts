@@ -35,22 +35,30 @@ export class EditorService {
         })
       }
     }
+    let publishToAll = true
+    // if the record is new, generate a new unique identifier and pass publishToAll as false
+    if (!record.uniqueIdentifier) {
+      generateNewUniqueIdentifier = true
+      publishToAll = false
+    }
 
     // if we want a new unique identifier, clear the existing one
     if (generateNewUniqueIdentifier) {
       savedRecord.uniqueIdentifier = null
     }
 
-    return this.recordsRepository.saveRecord(savedRecord, recordSource).pipe(
-      switchMap((uniqueIdentifier) =>
-        this.recordsRepository.openRecordForEdition(uniqueIdentifier)
-      ),
-      tap(() => {
-        // if saving was successful, the original draft can be discarded
-        this.recordsRepository.clearRecordDraft(record.uniqueIdentifier)
-      }),
-      map(([record, recordSource]) => [record, recordSource])
-    )
+    return this.recordsRepository
+      .saveRecord(savedRecord, recordSource, publishToAll)
+      .pipe(
+        switchMap((uniqueIdentifier) =>
+          this.recordsRepository.openRecordForEdition(uniqueIdentifier)
+        ),
+        tap(() => {
+          // if saving was successful, the original draft can be discarded
+          this.recordsRepository.clearRecordDraft(record.uniqueIdentifier)
+        }),
+        map(([record, recordSource]) => [record, recordSource])
+      )
   }
 
   // emits and completes once saving is done

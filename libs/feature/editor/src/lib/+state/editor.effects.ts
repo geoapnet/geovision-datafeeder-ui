@@ -63,12 +63,14 @@ export class EditorEffects {
         ofType(EditorActions.saveRecordSuccess),
         withLatestFrom(this.store.select(selectRecord)),
         switchMap(([_, record]) => {
-          this.gn4PlateformService.cleanRecordAttachments(record).subscribe({
-            next: (_) => undefined,
-            error: (err) => {
-              console.error(err)
-            },
-          })
+          if (record.uniqueIdentifier !== null) {
+            this.gn4PlateformService.cleanRecordAttachments(record).subscribe({
+              next: (_) => undefined,
+              error: (err) => {
+                console.error(err)
+              },
+            })
+          }
           return EMPTY
         }),
         catchError((error) => {

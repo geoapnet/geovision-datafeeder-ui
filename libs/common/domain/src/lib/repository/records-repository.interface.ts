@@ -49,7 +49,8 @@ export abstract class RecordsRepositoryInterface {
    */
   abstract saveRecord(
     record: CatalogRecord,
-    referenceRecordSource?: string
+    referenceRecordSource?: string,
+    publishToAll?: boolean
   ): Observable<string>
 
   /**
@@ -82,7 +83,6 @@ export abstract class RecordsRepositoryInterface {
 
   abstract clearRecordDraft(uniqueIdentifier: string): void
   abstract recordHasDraft(uniqueIdentifier: string): boolean
-  abstract isRecordNotYetSaved(uniqueIdentifier: string): boolean
 
   /** will return all pending drafts, both published and not published */
   abstract getAllDrafts(): Observable<CatalogRecord[]>

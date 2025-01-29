@@ -59,6 +59,8 @@ export class EditPageComponent implements OnInit, OnDestroy {
   )
   hasRecordChanged$ = this.facade.hasRecordChanged$.pipe(skip(1))
 
+  newRecord = false
+
   @ViewChild('scrollContainer') scrollContainer: ElementRef<HTMLElement>
 
   constructor(
@@ -78,6 +80,12 @@ export class EditPageComponent implements OnInit, OnDestroy {
       currentRecordSource,
       currentRecordAlreadySaved
     )
+    this.facade.alreadySavedOnce$.subscribe((alreadySavedOnce) => {
+      if (!alreadySavedOnce) {
+        this.newRecord = true
+        this.facade.saveRecord()
+      }
+    })
 
     this.subscription.add(
       this.facade.saveError$.subscribe((error) => {
@@ -122,18 +130,20 @@ export class EditPageComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.facade.saveSuccess$.subscribe(() => {
-        this.notificationsService.showNotification(
-          {
-            type: 'success',
-            title: this.translateService.instant(
-              'editor.record.publishSuccess.title'
-            ),
-            text: `${this.translateService.instant(
-              'editor.record.publishSuccess.body'
-            )}`,
-          },
-          2500
-        )
+        if (!this.newRecord) {
+          this.notificationsService.showNotification(
+            {
+              type: 'success',
+              title: this.translateService.instant(
+                'editor.record.publishSuccess.title'
+              ),
+              text: `${this.translateService.instant(
+                'editor.record.publishSuccess.body'
+              )}`,
+            },
+            2500
+          )
+        }
       })
     )
 
@@ -142,17 +152,6 @@ export class EditPageComponent implements OnInit, OnDestroy {
         this.facade.checkHasRecordChanged(record)
       })
     )
-
-    // if we're on the /create route, go to /edit/{uuid} on first change
-    if (this.route.snapshot.routeConfig?.path.includes('create')) {
-      this.subscription.add(
-        this.facade.draftSaveSuccess$.pipe(take(1)).subscribe(() => {
-          this.router.navigate(['edit', currentRecord.uniqueIdentifier], {
-            replaceUrl: true,
-          })
-        })
-      )
-    }
 
     // if the record unique identifier changes, navigate to /edit/newUuid
     this.subscription.add(
@@ -167,12 +166,6 @@ export class EditPageComponent implements OnInit, OnDestroy {
         .subscribe((savedRecord) => {
           this.router.navigate(['edit', savedRecord.uniqueIdentifier])
         })
-    )
-
-    this.subscription.add(
-      this.facade.record$.subscribe((record) => {
-        this.facade.checkHasRecordChanged(record)
-      })
     )
   }
 
