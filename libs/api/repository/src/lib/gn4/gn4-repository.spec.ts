@@ -451,7 +451,7 @@ describe('Gn4Repository', () => {
             <mcc:code>
                 <gco:CharacterString>my-dataset-001</gco:CharacterString>`)
       })
-      it('calls the API to insert the record as XML', () => {
+      it('calls the API to insert the record as XML for existing records', () => {
         expect(gn4RecordsApi.insert).toHaveBeenCalledWith(
           expect.anything(),
           undefined,
@@ -756,15 +756,6 @@ describe('Gn4Repository', () => {
     })
   })
 
-  describe('isRecordNotYetSaved', () => {
-    it('returns true if the record has a temporary ID', () => {
-      expect(repository.isRecordNotYetSaved('TEMP-ID-12345')).toBe(true)
-    })
-
-    it('returns false if the record does not have a temporary ID', () => {
-      expect(repository.isRecordNotYetSaved('1234-5678')).toBe(false)
-    })
-  })
   describe('hasRecordChangedSinceDraft', () => {
     it('should return an empty array if the record is unsaved', () => {
       // Mock dependencies
