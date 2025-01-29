@@ -226,26 +226,40 @@ export class Gn4Repository implements RecordsRepositoryInterface {
 
   openRecordForDuplication(
     uniqueIdentifier: string
-  ): Observable<[CatalogRecord, string, false] | null> {
-    return this.getRecordAsXml(uniqueIdentifier).pipe(
-      switchMap(async (fetchedRecordAsXml) => {
-        const converter = findConverterForDocument(fetchedRecordAsXml)
-        const record = await converter.readRecord(fetchedRecordAsXml)
-
-        record.uniqueIdentifier = `${TEMPORARY_ID_PREFIX}${Date.now()}`
-        record.title = `${record.title} (Copy)`
-
-        const recordAsXml = await converter.writeRecord(
-          record,
-          fetchedRecordAsXml
-        )
-
-        this.saveRecordToLocalStorage(recordAsXml, record.uniqueIdentifier)
-        this._draftsChanged.next()
-
-        return [record, recordAsXml, false] as [CatalogRecord, string, false]
-      })
-    )
+  ): Observable<[CatalogRecord, string, true] | null> {
+    return this.gn4RecordsApi
+      .create(
+        uniqueIdentifier,
+        '2',
+        'METADATA',
+        '',
+        false,
+        undefined,
+        true,
+        false,
+        undefined,
+        'body',
+        false,
+        {
+          httpHeaderAccept: 'application/json',
+          httpContentTypeSelected: 'application/json;charset=UTF-8',
+        }
+      )
+      .pipe(
+        switchMap((uniqueIdentifier) => {
+          return this.getRecordAsXml(uniqueIdentifier)
+        }),
+        switchMap((xml) => {
+          return from(
+            findConverterForDocument(xml)
+              .readRecord(xml)
+              .then((record) => {
+                console.log(record, xml)
+                return [record, xml, true] as [CatalogRecord, string, true]
+              })
+          )
+        })
+      )
   }
 
   saveRecord(

@@ -34,13 +34,13 @@ export abstract class RecordsRepositoryInterface {
    * This emits once:
    * - record object with a new unique identifier and suffixed title
    * - serialized representation of the record as text
-   * - false, as the duplicated record is always a draft
+   * - trues, as the duplicated record is never a draft in localStorage
    * @param uniqueIdentifier
    * @returns Observable<[CatalogRecord, string, false] | null>
    */
   abstract openRecordForDuplication(
     uniqueIdentifier: string
-  ): Observable<[CatalogRecord, string, false] | null>
+  ): Observable<[CatalogRecord, string, true] | null>
 
   /**
    * @param record
