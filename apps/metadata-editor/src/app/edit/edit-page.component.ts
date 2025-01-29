@@ -80,12 +80,15 @@ export class EditPageComponent implements OnInit, OnDestroy {
       currentRecordSource,
       currentRecordAlreadySaved
     )
-    this.facade.alreadySavedOnce$.subscribe((alreadySavedOnce) => {
-      if (!alreadySavedOnce) {
-        this.newRecord = true
-        this.facade.saveRecord()
-      }
-    })
+
+    this.subscription.add(
+      this.facade.record$.pipe(take(1)).subscribe((record) => {
+        if (!record.uniqueIdentifier) {
+          this.newRecord = true
+          this.facade.saveRecord()
+        }
+      })
+    )
 
     this.subscription.add(
       this.facade.saveError$.subscribe((error) => {
