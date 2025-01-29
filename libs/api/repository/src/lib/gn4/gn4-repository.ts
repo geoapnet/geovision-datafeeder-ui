@@ -42,6 +42,7 @@ import {
 import { catchError, map, tap } from 'rxjs/operators'
 import { lt } from 'semver'
 import { ElasticsearchService } from './elasticsearch'
+import { is } from 'date-fns/locale'
 
 const minPublicationApiVersion = '4.2.5'
 
@@ -53,6 +54,8 @@ export type RecordAsXml = string
 export class Gn4Repository implements RecordsRepositoryInterface {
   _draftsChanged = new Subject<void>()
   draftsChanged$ = this._draftsChanged.asObservable()
+  _isDraftInApi$ = new Subject<boolean>()
+  isDraftInApi$ = this._isDraftInApi$.asObservable()
 
   constructor(
     private httpClient: HttpClient,
@@ -249,7 +252,7 @@ export class Gn4Repository implements RecordsRepositoryInterface {
     record: CatalogRecord,
     referenceRecordSource?: string,
     publishToAll = true
-  ): Observable<string> {
+  ): Observable<{ uuid: string; isDraft: boolean }> {
     return this.platformService.getApiVersion().pipe(
       map((version) => {
         if (lt(version, minPublicationApiVersion)) {
@@ -278,7 +281,12 @@ export class Gn4Repository implements RecordsRepositoryInterface {
       ),
       map((response) => {
         const metadataId = Object.keys(response.metadataInfos)[0]
-        return response.metadataInfos[metadataId][0].uuid
+        // this._isDraftInApi$.next(response.metadataInfos[metadataId][0].draft)
+        console.log(response)
+        return {
+          uuid: response.metadataInfos[metadataId][0].uuid,
+          isDraft: response.metadataInfos[metadataId][0].draft,
+        }
       })
     )
   }

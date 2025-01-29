@@ -35,8 +35,8 @@ export class EditorFacade {
   hasRecordChanged$ = this.store.pipe(
     select(EditorSelectors.selectHasRecordChanged)
   )
-  isPublishedToAll$ = this.store.pipe(
-    select(EditorSelectors.selectPublishedToAll)
+  savedButNotPublished$ = this.store.pipe(
+    select(EditorSelectors.selectSavedButNotPublished)
   )
 
   openRecord(
@@ -72,5 +72,9 @@ export class EditorFacade {
 
   checkHasRecordChanged(record: CatalogRecord) {
     this.store.dispatch(EditorActions.hasRecordChangedSinceDraft({ record }))
+  }
+
+  savedButNotPublished(isDraft: boolean) {
+    this.store.dispatch(EditorActions.savedButNotPublished({ isDraft }))
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Observable, switchMap } from 'rxjs'
+import { forkJoin, Observable, of, switchMap } from 'rxjs'
 import { map, tap } from 'rxjs/operators'
 import { CatalogRecord } from '@geonetwork-ui/common/domain/model/record'
 import { EditorConfig } from '../models/'
@@ -50,14 +50,18 @@ export class EditorService {
     return this.recordsRepository
       .saveRecord(savedRecord, recordSource, publishToAll)
       .pipe(
-        switchMap((uniqueIdentifier) =>
-          this.recordsRepository.openRecordForEdition(uniqueIdentifier)
+        switchMap(({ uuid, isDraft }) =>
+          forkJoin([
+            this.recordsRepository.openRecordForEdition(uuid),
+            of(isDraft),
+          ])
         ),
+
         tap(() => {
           // if saving was successful, the original draft can be discarded
           this.recordsRepository.clearRecordDraft(record.uniqueIdentifier)
         }),
-        map(([record, recordSource]) => [record, recordSource, publishToAll])
+        map(([record, isDraft]) => [record[0], record[1], isDraft])
       )
   }
 

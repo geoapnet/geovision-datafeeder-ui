@@ -67,7 +67,7 @@ export const selectHasRecordChanged = createSelector(
   (state: EditorState) => state.hasRecordChanged
 )
 
-export const selectPublishedToAll = createSelector(
+export const selectSavedButNotPublished = createSelector(
   selectEditorState,
-  (state: EditorState) => state.publishedToAll
+  (state: EditorState) => state.savedButNotPublished
 )

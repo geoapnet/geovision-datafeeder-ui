@@ -35,15 +35,15 @@ export class EditorEffects {
         this.editorService
           .saveRecord(record, recordSource, fieldsConfig, !alreadySavedOnce)
           .pipe(
-            switchMap(([record, recordSource, publishedToAll]) =>
+            switchMap(([record, recordSource, isDraft]) =>
               of(
                 EditorActions.saveRecordSuccess(),
                 EditorActions.openRecord({
                   record,
                   alreadySavedOnce: true,
                   recordSource,
-                  publishedToAll,
-                })
+                }),
+                EditorActions.savedButNotPublished({ isDraft })
               )
             ),
             catchError((error) =>
@@ -144,4 +144,14 @@ export class EditorEffects {
       )
     )
   )
+
+  // savedButNotPublished$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(EditorActions.savedButNotPublished),
+  //     switchMap(({isDraft} ) => {
+  //       this.editorService.saveRecord(record)
+  //       return isDraft
+  //     })
+  //   )
+  // )
 }

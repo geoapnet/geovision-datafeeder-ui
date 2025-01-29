@@ -51,7 +51,7 @@ export abstract class RecordsRepositoryInterface {
     record: CatalogRecord,
     referenceRecordSource?: string,
     publishToAll?: boolean
-  ): Observable<string>
+  ): Observable<{ uuid: string; isDraft: boolean }>
 
   /**
    * Try to duplicate the external record from given url. If it suceed, then it will save the record as draft and return its temporary id.
@@ -88,6 +88,7 @@ export abstract class RecordsRepositoryInterface {
   abstract getAllDrafts(): Observable<CatalogRecord[]>
   abstract getDraftsCount(): Observable<number>
   abstract draftsChanged$: Observable<void>
+  abstract isDraftInApi$: Observable<boolean>
   abstract hasRecordChangedSinceDraft(
     localRecord: CatalogRecord
   ): Observable<{ user: string; date: Date }>
