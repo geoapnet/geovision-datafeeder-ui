@@ -11,6 +11,8 @@ describe('record-actions', () => {
     describe('record with draft', () => {
       it('should delete the record, delete its associated draft and refresh the interface', () => {
         // First create a record and its draft
+
+        // Edit a record, make it draft or use a draft directly
         cy.get('[data-cy="create-record"]').click()
         cy.url().should('include', '/create')
         cy.get('gn-ui-form-field[ng-reflect-model=abstract] textarea')
@@ -184,9 +186,9 @@ describe('record-actions', () => {
 
   describe('undo', () => {
     it('should restore the record and refresh the interface', () => {
-      // First create a record and its draft
-      cy.get('[data-cy="create-record"]').click()
-      cy.url().should('include', '/create')
+      // Edit an existing record and create a draft
+      cy.get('[data-cy="resultItemTitle"]').first().click()
+      cy.url().should('include', '/edit')
       cy.get('gn-ui-form-field[ng-reflect-model=abstract] textarea')
         .as('abstractField')
         .focus()
