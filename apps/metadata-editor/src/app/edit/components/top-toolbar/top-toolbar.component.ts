@@ -77,11 +77,10 @@ export class TopToolbarComponent {
       this.editorFacade.savedButNotPublished$,
     ]).pipe(
       map(([changedSinceSave, isDraft]) => {
-        console.log('changesince', changedSinceSave)
-        if (isDraft) {
-          return 'record_not_published'
+        if (changedSinceSave) {
+          return 'draft_changes_pending'
         }
-        return changedSinceSave ? 'draft_changes_pending' : 'record_up_to_date'
+        return isDraft ? 'record_not_published' : 'record_up_to_date'
       })
     )
 

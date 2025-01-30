@@ -137,8 +137,10 @@ export class EditorEffects {
         this.editorService
           .hasRecordChangedSinceDraft(record)
           .pipe(
-            map((changes) =>
-              EditorActions.hasRecordChangedSinceDraftSuccess({ changes })
+            map(
+              (changes) =>
+                EditorActions.hasRecordChangedSinceDraftSuccess({ changes }),
+              EditorActions.savedButNotPublished({ isDraft: false })
             )
           )
       )
