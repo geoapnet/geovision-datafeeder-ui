@@ -49,13 +49,23 @@ const reducer = createReducer(
   initialEditorState,
   on(
     EditorActions.openRecord,
-    (state, { record, recordSource, alreadySavedOnce, publishedToAll }) => ({
+    (
+      state,
+      {
+        record,
+        recordSource,
+        alreadySavedOnce,
+        publishedToAll,
+        savedButNotPublished,
+      }
+    ) => ({
       ...state,
       changedSinceSave: false,
       recordSource: recordSource ?? null,
       alreadySavedOnce,
       record,
       publishedToAll,
+      savedButNotPublished, //: savedButNotPublished ?? state.savedButNotPublished,
     })
   ),
   on(EditorActions.saveRecord, (state) => ({

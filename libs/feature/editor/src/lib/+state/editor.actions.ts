@@ -10,6 +10,7 @@ export const openRecord = createAction(
     alreadySavedOnce: boolean
     recordSource?: string | null
     publishedToAll?: boolean
+    savedButNotPublished?: boolean
   }>()
 )
 

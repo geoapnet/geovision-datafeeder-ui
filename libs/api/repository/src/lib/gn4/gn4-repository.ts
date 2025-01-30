@@ -205,8 +205,9 @@ export class Gn4Repository implements RecordsRepositoryInterface {
   }
 
   openRecordForEdition(
-    uniqueIdentifier: string
-  ): Observable<[CatalogRecord, string, boolean] | null> {
+    uniqueIdentifier: string,
+    published = true
+  ): Observable<[CatalogRecord, string, boolean, boolean] | null> {
     const draft$ = of(this.getRecordFromLocalStorage(uniqueIdentifier))
     const recordAsXml$ = this.getRecordAsXml(uniqueIdentifier)
 
@@ -218,7 +219,12 @@ export class Gn4Repository implements RecordsRepositoryInterface {
           .readRecord(xml)
           .then(
             (record) =>
-              [record, xml, isSavedAlready] as [CatalogRecord, string, boolean]
+              [record, xml, isSavedAlready, published] as [
+                CatalogRecord,
+                string,
+                boolean,
+                boolean,
+              ]
           )
       })
     )
@@ -226,7 +232,7 @@ export class Gn4Repository implements RecordsRepositoryInterface {
 
   openRecordForDuplication(
     uniqueIdentifier: string
-  ): Observable<[CatalogRecord, string, true] | null> {
+  ): Observable<[CatalogRecord, string, true, true] | null> {
     return this.gn4RecordsApi
       .create(
         uniqueIdentifier,
@@ -254,8 +260,13 @@ export class Gn4Repository implements RecordsRepositoryInterface {
             findConverterForDocument(xml)
               .readRecord(xml)
               .then((record) => {
-                console.log(record, xml)
-                return [record, xml, true] as [CatalogRecord, string, true]
+                // console.log(record, xml)
+                return [record, xml, true, true] as [
+                  CatalogRecord,
+                  string,
+                  true,
+                  true,
+                ]
               })
           )
         })

@@ -79,7 +79,7 @@ export class EditorService {
 
   undoRecordDraft(
     record: CatalogRecord
-  ): Observable<[CatalogRecord, string, boolean]> {
+  ): Observable<[CatalogRecord, string, boolean, boolean]> {
     this.recordsRepository.clearRecordDraft(record.uniqueIdentifier)
     return this.recordsRepository.openRecordForEdition(record.uniqueIdentifier)
   }

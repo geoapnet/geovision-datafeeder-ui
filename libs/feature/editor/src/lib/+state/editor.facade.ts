@@ -42,10 +42,16 @@ export class EditorFacade {
   openRecord(
     record: CatalogRecord,
     recordSource: string,
-    alreadySavedOnce: boolean
+    alreadySavedOnce: boolean,
+    savedButNotPublished: boolean
   ) {
     this.store.dispatch(
-      EditorActions.openRecord({ record, recordSource, alreadySavedOnce })
+      EditorActions.openRecord({
+        record,
+        recordSource,
+        alreadySavedOnce,
+        savedButNotPublished,
+      })
     )
     this.setCurrentPage(0)
   }

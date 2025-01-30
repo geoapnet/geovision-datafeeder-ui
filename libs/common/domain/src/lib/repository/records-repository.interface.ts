@@ -27,8 +27,9 @@ export abstract class RecordsRepositoryInterface {
    * @returns Observable<[CatalogRecord, string, boolean] | null>
    */
   abstract openRecordForEdition(
-    uniqueIdentifier: string
-  ): Observable<[CatalogRecord, string, boolean] | null>
+    uniqueIdentifier: string,
+    published?: boolean
+  ): Observable<[CatalogRecord, string, boolean, boolean] | null>
 
   /**
    * This emits once:
@@ -40,7 +41,7 @@ export abstract class RecordsRepositoryInterface {
    */
   abstract openRecordForDuplication(
     uniqueIdentifier: string
-  ): Observable<[CatalogRecord, string, true] | null>
+  ): Observable<[CatalogRecord, string, true, true] | null>
 
   abstract duplicateRecord(uniqueIdentifier: string): Observable<string>
   /**

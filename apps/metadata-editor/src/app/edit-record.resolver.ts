@@ -18,9 +18,12 @@ export class EditRecordResolver {
 
   resolve(
     route: ActivatedRouteSnapshot
-  ): Observable<[CatalogRecord, string, boolean]> {
+  ): Observable<[CatalogRecord, string, boolean, boolean]> {
     return this.recordsRepository
-      .openRecordForEdition(route.paramMap.get('uuid'))
+      .openRecordForEdition(
+        route.paramMap.get('uuid'),
+        route.queryParams.published === 'false'
+      )
       .pipe(
         catchError((error) => {
           this.notificationsService.showNotification(
