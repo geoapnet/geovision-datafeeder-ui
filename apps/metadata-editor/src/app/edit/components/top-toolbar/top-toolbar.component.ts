@@ -27,7 +27,6 @@ import {
   matHelpOutlineOutline,
   matPendingOutline,
 } from '@ng-icons/material-icons/outline'
-import { RecordsRepositoryInterface } from '@geonetwork-ui/common/domain/repository/records-repository.interface'
 
 @Component({
   selector: 'md-editor-top-toolbar',
@@ -78,8 +77,7 @@ export class TopToolbarComponent {
       this.editorFacade.savedButNotPublished$,
     ]).pipe(
       map(([changedSinceSave, isDraft]) => {
-        console.log('isDraft', isDraft)
-
+        console.log('changesince', changedSinceSave)
         if (isDraft) {
           return 'record_not_published'
         }
@@ -90,8 +88,7 @@ export class TopToolbarComponent {
   constructor(
     public dialog: MatDialog,
     private translateService: TranslateService,
-    private editorFacade: EditorFacade,
-    private recordRepository: RecordsRepositoryInterface
+    private editorFacade: EditorFacade
   ) {}
 
   confirmUndo() {

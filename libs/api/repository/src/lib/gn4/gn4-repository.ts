@@ -281,8 +281,7 @@ export class Gn4Repository implements RecordsRepositoryInterface {
       ),
       map((response) => {
         const metadataId = Object.keys(response.metadataInfos)[0]
-        // this._isDraftInApi$.next(response.metadataInfos[metadataId][0].draft)
-        console.log(response)
+        console.log(response.metadataInfos[metadataId][0].draft)
         return {
           uuid: response.metadataInfos[metadataId][0].uuid,
           isDraft: response.metadataInfos[metadataId][0].draft,

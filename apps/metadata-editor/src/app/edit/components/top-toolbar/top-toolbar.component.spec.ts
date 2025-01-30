@@ -9,6 +9,7 @@ import { TranslateModule } from '@ngx-translate/core'
 class EditorFacadeMock {
   changedSinceSave$ = new BehaviorSubject(false)
   alreadySavedOnce$ = new BehaviorSubject(false)
+  savedButNotPublished$ = new BehaviorSubject(false)
 }
 
 @Component({
