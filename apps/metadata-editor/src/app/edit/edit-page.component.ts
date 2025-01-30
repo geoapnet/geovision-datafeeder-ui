@@ -176,7 +176,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
     if (this.route.snapshot.routeConfig?.path.includes('duplicate')) {
       this.router.navigate(['edit', currentRecord.uniqueIdentifier], {
         replaceUrl: true,
-        queryParams: { published: false },
+        state: { published: false },
       })
     }
 

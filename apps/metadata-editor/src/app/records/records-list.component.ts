@@ -63,7 +63,7 @@ export class RecordsListComponent implements OnInit, Paginable {
 
   editRecord(record: CatalogRecord) {
     this.router.navigate(['/edit', record.uniqueIdentifier], {
-      queryParams: { published: record.extras.isPublishedToAll },
+      state: { published: record.extras.isPublishedToAll },
     })
   }
 
